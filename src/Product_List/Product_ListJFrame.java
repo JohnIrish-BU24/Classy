@@ -19,6 +19,11 @@ public class Product_ListJFrame extends javax.swing.JFrame {
      */
     public Product_ListJFrame() {
         initComponents();
+        this.setSize(1250, 670);
+        
+        this.setResizable(false);
+        
+        this.setLocationRelativeTo(null);
     }
 
     /**
