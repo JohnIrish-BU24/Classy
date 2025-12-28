@@ -2,20 +2,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Pending_Orders;
+package Cart;
+
+import Pending_Orders.*;
 
 /**
  *
  * @author milal
  */
-public class Pending_OrdersJFrame extends javax.swing.JFrame {
+public class CartJFrame extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Pending_OrdersJFrame.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CartJFrame.class.getName());
 
     /**
      * Creates new form Pending_OrdersJFrame
      */
-    public Pending_OrdersJFrame() {
+    public CartJFrame() {
         initComponents();
     }
 
@@ -265,7 +267,7 @@ public class Pending_OrdersJFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Pending_OrdersJFrame().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new CartJFrame().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
