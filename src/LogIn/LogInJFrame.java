@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package LogIn;
+import Product_List.Product_ListJFrame;
 
 /**
  *
@@ -169,6 +170,13 @@ public class LogInJFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+        // Open the Product List window
+        Product_ListJFrame productPage = new Product_ListJFrame();
+        productPage.setVisible(true);
+
+        // Close the Login window
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
