@@ -238,10 +238,11 @@ public class Product_ListJFrame extends javax.swing.JFrame {
         jPanel5.add(jButton5);
         jButton5.setBounds(20, 16, 107, 32);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sizes", "Small", "Medium", "Large" }));
         jComboBox1.addActionListener(this::jComboBox1ActionPerformed);
         jPanel5.add(jComboBox1);
-        jComboBox1.setBounds(389, 20, 72, 22);
+        jComboBox1.setBounds(389, 20, 80, 22);
 
         jPanel7.setBackground(new java.awt.Color(242, 227, 202));
         jPanel7.setLayout(null);
