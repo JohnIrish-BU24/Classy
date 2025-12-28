@@ -96,7 +96,7 @@ public class LogInJFrame extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LogIn/User Logo.png"))); // NOI18N
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LogIn/Logo (3).png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LogIn/Password Logo.png"))); // NOI18N
 
         jCheckBox1.setFont(new java.awt.Font("Tw Cen MT", 1, 12)); // NOI18N
         jCheckBox1.setText("Show Password");
