@@ -19,7 +19,7 @@ public class LogInJFrame extends javax.swing.JFrame {
         initComponents();
         // Replace these numbers with the ones you found in Properties!
         int width = 1000;   // <--- CHANGE THIS. If you have space on the right, make this number smaller.
-        int height = 567;  // <--- Keep this matching your image height.
+        int height = 560;  // <--- Keep this matching your image height.
 
         this.setSize(width, height);
         // 1. Center the window on the screen (Professional touch)
@@ -83,7 +83,7 @@ public class LogInJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LogIn/Classy Logo.png"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 235, 205));
 
@@ -151,7 +151,7 @@ public class LogInJFrame extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 420, 250));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 420, 250));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LogIn/OOP LAYOUT.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1090, 570));

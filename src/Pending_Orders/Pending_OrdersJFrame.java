@@ -17,6 +17,12 @@ public class Pending_OrdersJFrame extends javax.swing.JFrame {
      */
     public Pending_OrdersJFrame() {
         initComponents();
+        
+        this.setSize(1020, 580);
+        
+        this.setResizable(false);
+        
+        this.setLocationRelativeTo(null);
     }
 
     /**
