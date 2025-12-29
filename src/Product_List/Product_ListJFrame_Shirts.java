@@ -7,6 +7,11 @@ import Cart.CartJFrame;
 import Pending_Orders.Pending_OrdersJFrame;
 import LogIn.LogInJFrame;
 
+import java.io.File;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+import java.util.HashMap;
+
 /**
  *
  * @author milal
@@ -15,16 +20,72 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Product_ListJFrame_Shirts.class.getName());
 
+    private HashMap<String, String> productMap = new HashMap<>();
+    
     /**
      * Creates new form Pending_OrdersJFrame
      */
     public Product_ListJFrame_Shirts() {
         initComponents();
+        
+        loadProductData();
+        
         this.setSize(1250, 670);
         
         this.setResizable(false);
         
         this.setLocationRelativeTo(null);
+    }
+    
+    public void loadProductData() {
+        try {
+            // Ensure this file is in your main Project folder (the "Classy" folder)
+            File file = new File("Classy Product List [productID, price].txt");
+            Scanner reader = new Scanner(file);
+            while (reader.hasNextLine()) {
+                String line = reader.nextLine().trim();
+                if (line.isEmpty()) continue;
+
+                // Splits "cat_shirt 399" into ["cat_shirt", "399"]
+                String[] parts = line.split(" "); 
+                if (parts.length >= 2) {
+                    productMap.put(parts[0], parts[1]); 
+                }
+            }
+            reader.close();
+            displayProductInfo(); // Updates your labels once loading is done
+        } catch (Exception e) {
+            System.out.println("File not found! Make sure the .txt is in the root project folder.");
+        }
+    }
+
+    // New Method to set text to your JLabels
+private void displayProductInfo() {
+        // UPDATED KEYS: These must match your new TXT file exactly!
+        
+        // Panel 7: Cat Shirt
+        jLabel6.setText("Cat Shirt");
+        jLabel16.setText(productMap.getOrDefault("Cat Shirt", "0"));
+
+        // Panel 11: Varsity Shirt
+        jLabel28.setText("Varsity");
+        jLabel31.setText(productMap.getOrDefault("Varsity", "0"));
+
+        // Panel 10: Mountain
+        jLabel23.setText("Mountain");
+        jLabel26.setText(productMap.getOrDefault("Mountain", "0"));
+
+        // Panel 8: Khaki Stripes
+        jLabel11.setText("Khaki");
+        jLabel17.setText(productMap.getOrDefault("Stripes", "0"));
+
+        // Panel 6: Cowgirl
+        jLabel3.setText("Cowgirl");
+        jLabel15.setText(productMap.getOrDefault("Cowgirl", "0"));
+
+        // Panel 9: Khaki Cat
+        jLabel18.setText("Khaki Cat");
+        jLabel21.setText(productMap.getOrDefault("Khaki Cat", "0"));
     }
 
     /**
@@ -202,7 +263,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         jLabel3.setText("Product ID");
         jPanel6.add(jLabel3);
-        jLabel3.setBounds(90, 100, 56, 16);
+        jLabel3.setBounds(100, 100, 56, 16);
 
         jLabel4.setText("Price:");
         jPanel6.add(jLabel4);
@@ -210,7 +271,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         jLabel5.setText("Quantity:");
         jPanel6.add(jLabel5);
-        jLabel5.setBounds(15, 143, 49, 16);
+        jLabel5.setBounds(15, 143, 47, 16);
 
         jLabel15.setText("$$$");
         jPanel6.add(jLabel15);
@@ -261,7 +322,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         jLabel9.setText("Quantity:");
         jPanel7.add(jLabel9);
-        jLabel9.setBounds(15, 143, 49, 16);
+        jLabel9.setBounds(15, 143, 47, 16);
 
         jLabel16.setText("$$$");
         jPanel7.add(jLabel16);
@@ -290,7 +351,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         jLabel11.setText("Product ID");
         jPanel8.add(jLabel11);
-        jLabel11.setBounds(90, 100, 56, 16);
+        jLabel11.setBounds(100, 100, 56, 16);
 
         jLabel12.setText("Price:");
         jPanel8.add(jLabel12);
@@ -298,7 +359,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         jLabel13.setText("Quantity:");
         jPanel8.add(jLabel13);
-        jLabel13.setBounds(15, 143, 49, 16);
+        jLabel13.setBounds(15, 143, 47, 16);
 
         jLabel17.setText("$$$");
         jPanel8.add(jLabel17);
@@ -335,7 +396,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         jLabel20.setText("Quantity:");
         jPanel9.add(jLabel20);
-        jLabel20.setBounds(15, 143, 49, 16);
+        jLabel20.setBounds(15, 143, 47, 16);
 
         jLabel21.setText("$$$");
         jPanel9.add(jLabel21);
@@ -364,7 +425,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         jLabel23.setText("Product ID");
         jPanel10.add(jLabel23);
-        jLabel23.setBounds(90, 100, 56, 16);
+        jLabel23.setBounds(100, 100, 56, 16);
 
         jLabel24.setText("Price:");
         jPanel10.add(jLabel24);
@@ -372,7 +433,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         jLabel25.setText("Quantity:");
         jPanel10.add(jLabel25);
-        jLabel25.setBounds(15, 143, 49, 16);
+        jLabel25.setBounds(15, 143, 47, 16);
 
         jLabel26.setText("$$$");
         jPanel10.add(jLabel26);
@@ -401,7 +462,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         jLabel28.setText("Product ID");
         jPanel11.add(jLabel28);
-        jLabel28.setBounds(90, 100, 56, 16);
+        jLabel28.setBounds(100, 100, 56, 16);
 
         jLabel29.setText("Price:");
         jPanel11.add(jLabel29);
@@ -409,7 +470,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         jLabel30.setText("Quantity:");
         jPanel11.add(jLabel30);
-        jLabel30.setBounds(15, 143, 49, 16);
+        jLabel30.setBounds(15, 143, 47, 16);
 
         jLabel31.setText("$$$");
         jPanel11.add(jLabel31);
