@@ -535,7 +535,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
     
-    Product_ListJFrame_Pants pantsPage = new Product_ListJFrame_Pants();
+    Product_ListJFrame_Dresses pantsPage = new Product_ListJFrame_Dresses();
     
     pantsPage.setVisible(true);
 

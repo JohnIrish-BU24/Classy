@@ -165,18 +165,35 @@ public class LogInJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:                                         
+        if (jCheckBox1.isSelected()) {
+            jPasswordField1.setEchoChar((char)0); // Show password
+        } else {
+            jPasswordField1.setEchoChar('*');     // Hide password
+        }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
-        // Open the Product List window
-        Product_ListJFrame productPage = new Product_ListJFrame();
-        productPage.setVisible(true);
+        // TODO add your handling code here:                                      
+        // 1. GET INPUT
+        String username = jTextField1.getText();
+        String password = new String(jPasswordField1.getPassword());
 
-        // Close the Login window
-        this.dispose();
+        // 2. CHECK CREDENTIALS
+        if (username.equals("admin") && password.equals("12345")) {
+            // SUCCESS
+            Product_List.Product_ListJFrame pantsPage = new Product_List.Product_ListJFrame();
+            pantsPage.setLocationRelativeTo(null);
+            pantsPage.setVisible(true);
+            this.dispose();
+        } else {
+            // FAILURE
+            javax.swing.JOptionPane.showMessageDialog(this, 
+                "Invalid Username or Password!", "Login Error", 
+                javax.swing.JOptionPane.ERROR_MESSAGE);
+            jPasswordField1.setText("");
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
