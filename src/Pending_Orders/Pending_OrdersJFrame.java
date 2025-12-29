@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Pending_Orders;
-import Product_List.Product_ListJFrame;
+import Product_List.Product_ListJFrame_Shirts;
 import Cart.CartJFrame;
 import LogIn.LogInJFrame;
 
@@ -245,7 +245,7 @@ public class Pending_OrdersJFrame extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // Open the Product List window
-        Product_ListJFrame productPage = new Product_ListJFrame();
+        Product_ListJFrame_Shirts productPage = new Product_ListJFrame_Shirts();
         productPage.setVisible(true);
 
         // Close the current window

@@ -204,11 +204,11 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
 
         jLabel4.setText("Price:");
         jPanel6.add(jLabel4);
-        jLabel4.setBounds(15, 118, 28, 16);
+        jLabel4.setBounds(15, 118, 50, 16);
 
         jLabel5.setText("Quantity:");
         jPanel6.add(jLabel5);
-        jLabel5.setBounds(15, 143, 47, 16);
+        jLabel5.setBounds(15, 143, 49, 16);
 
         jLabel15.setText("$$$");
         jPanel6.add(jLabel15);
@@ -227,7 +227,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Product_List/18.png"))); // NOI18N
         jLabel7.setText("jLabel7");
         jPanel6.add(jLabel7);
-        jLabel7.setBounds(70, 0, 100, 100);
+        jLabel7.setBounds(70, 0, 100, 16);
 
         jPanel5.add(jPanel6);
         jPanel6.setBounds(370, 320, 240, 220);
@@ -253,11 +253,11 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
 
         jLabel8.setText("Price:");
         jPanel7.add(jLabel8);
-        jLabel8.setBounds(15, 118, 28, 16);
+        jLabel8.setBounds(15, 118, 40, 16);
 
         jLabel9.setText("Quantity:");
         jPanel7.add(jLabel9);
-        jLabel9.setBounds(15, 143, 47, 16);
+        jLabel9.setBounds(15, 143, 49, 16);
 
         jLabel16.setText("$$$");
         jPanel7.add(jLabel16);
@@ -276,7 +276,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Product_List/13.png"))); // NOI18N
         jLabel10.setText("jLabel7");
         jPanel7.add(jLabel10);
-        jLabel10.setBounds(70, 0, 100, 100);
+        jLabel10.setBounds(70, 0, 100, 16);
 
         jPanel5.add(jPanel7);
         jPanel7.setBounds(60, 80, 240, 220);
@@ -290,11 +290,11 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
 
         jLabel12.setText("Price:");
         jPanel8.add(jLabel12);
-        jLabel12.setBounds(15, 118, 28, 16);
+        jLabel12.setBounds(15, 118, 50, 16);
 
         jLabel13.setText("Quantity:");
         jPanel8.add(jLabel13);
-        jLabel13.setBounds(15, 143, 47, 16);
+        jLabel13.setBounds(15, 143, 49, 16);
 
         jLabel17.setText("$$$");
         jPanel8.add(jLabel17);
@@ -313,7 +313,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Product_List/16.png"))); // NOI18N
         jLabel14.setText("jLabel7");
         jPanel8.add(jLabel14);
-        jLabel14.setBounds(70, 0, 100, 100);
+        jLabel14.setBounds(70, 0, 100, 16);
 
         jPanel5.add(jPanel8);
         jPanel8.setBounds(60, 320, 240, 220);
@@ -327,11 +327,11 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
 
         jLabel19.setText("Price:");
         jPanel9.add(jLabel19);
-        jLabel19.setBounds(15, 118, 28, 16);
+        jLabel19.setBounds(15, 118, 40, 16);
 
         jLabel20.setText("Quantity:");
         jPanel9.add(jLabel20);
-        jLabel20.setBounds(15, 143, 47, 16);
+        jLabel20.setBounds(15, 143, 49, 16);
 
         jLabel21.setText("$$$");
         jPanel9.add(jLabel21);
@@ -350,7 +350,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
         jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Product_List/17.png"))); // NOI18N
         jLabel22.setText("jLabel7");
         jPanel9.add(jLabel22);
-        jLabel22.setBounds(70, 0, 100, 100);
+        jLabel22.setBounds(70, 0, 100, 16);
 
         jPanel5.add(jPanel9);
         jPanel9.setBounds(680, 320, 240, 220);
@@ -364,11 +364,11 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
 
         jLabel24.setText("Price:");
         jPanel10.add(jLabel24);
-        jLabel24.setBounds(15, 118, 28, 16);
+        jLabel24.setBounds(15, 118, 40, 16);
 
         jLabel25.setText("Quantity:");
         jPanel10.add(jLabel25);
-        jLabel25.setBounds(15, 143, 47, 16);
+        jLabel25.setBounds(15, 143, 49, 16);
 
         jLabel26.setText("$$$");
         jPanel10.add(jLabel26);
@@ -387,7 +387,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
         jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Product_List/15.png"))); // NOI18N
         jLabel27.setText("jLabel7");
         jPanel10.add(jLabel27);
-        jLabel27.setBounds(70, 0, 100, 100);
+        jLabel27.setBounds(70, 0, 100, 16);
 
         jPanel5.add(jPanel10);
         jPanel10.setBounds(680, 80, 240, 220);
@@ -401,11 +401,11 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
 
         jLabel29.setText("Price:");
         jPanel11.add(jLabel29);
-        jLabel29.setBounds(15, 118, 28, 16);
+        jLabel29.setBounds(15, 118, 40, 16);
 
         jLabel30.setText("Quantity:");
         jPanel11.add(jLabel30);
-        jLabel30.setBounds(15, 143, 47, 16);
+        jLabel30.setBounds(15, 143, 49, 16);
 
         jLabel31.setText("$$$");
         jPanel11.add(jLabel31);
@@ -424,7 +424,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
         jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Product_List/14.png"))); // NOI18N
         jLabel32.setText("jLabel7");
         jPanel11.add(jLabel32);
-        jLabel32.setBounds(70, 0, 100, 100);
+        jLabel32.setBounds(70, 0, 100, 16);
 
         jPanel5.add(jPanel11);
         jPanel11.setBounds(370, 80, 240, 220);
@@ -510,13 +510,12 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-    
-    Product_ListJFrame shirtPage = new Product_ListJFrame();
-    
-    shirtPage.setVisible(true);
+        // Go to Shirts Panel
+        Product_ListJFrame_Shirts productPage = new Product_ListJFrame_Shirts();
+        productPage.setVisible(true);
 
-    this.dispose();  
-    
+        // Close the current panel
+        this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -524,23 +523,21 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-    
-    Product_ListJFrame_Dresses dressPage = new Product_ListJFrame_Dresses();
-    
-    dressPage.setVisible(true);
+        // Go to Dresses Panel
+        Product_ListJFrame_Dresses productPage = new Product_ListJFrame_Dresses();
+        productPage.setVisible(true);
 
-    this.dispose(); 
-    
+        // Close the current panel
+        this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-    
-    Product_ListJFrame_Dresses pantsPage = new Product_ListJFrame_Dresses();
-    
-    pantsPage.setVisible(true);
+        // Go to Pants Panel
+        Product_ListJFrame_Pants productPage = new Product_ListJFrame_Pants();
+        productPage.setVisible(true);
 
-    this.dispose();
-    
+        // Close the current panel
+        this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed

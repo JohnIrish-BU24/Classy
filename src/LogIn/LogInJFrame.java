@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package LogIn;
-import Product_List.Product_ListJFrame;
+import Product_List.Product_ListJFrame_Shirts;
 
 /**
  *
@@ -182,7 +182,7 @@ public class LogInJFrame extends javax.swing.JFrame {
         // 2. CHECK CREDENTIALS
         if (username.equals("admin") && password.equals("12345")) {
             // SUCCESS
-            Product_List.Product_ListJFrame pantsPage = new Product_List.Product_ListJFrame();
+            Product_List.Product_ListJFrame_Shirts pantsPage = new Product_List.Product_ListJFrame_Shirts();
             pantsPage.setLocationRelativeTo(null);
             pantsPage.setVisible(true);
             this.dispose();

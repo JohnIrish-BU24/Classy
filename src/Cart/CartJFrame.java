@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Cart;
-import Product_List.Product_ListJFrame;
+import Product_List.Product_ListJFrame_Shirts;
 import Pending_Orders.Pending_OrdersJFrame;
 import LogIn.LogInJFrame;
 
@@ -266,7 +266,7 @@ public class CartJFrame extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // Open the Product List window
-        Product_ListJFrame productPage = new Product_ListJFrame();
+        Product_ListJFrame_Shirts productPage = new Product_ListJFrame_Shirts();
         productPage.setVisible(true);
 
         // Close the current window

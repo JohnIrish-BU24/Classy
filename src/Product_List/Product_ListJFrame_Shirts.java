@@ -11,14 +11,14 @@ import LogIn.LogInJFrame;
  *
  * @author milal
  */
-public class Product_ListJFrame extends javax.swing.JFrame {
+public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Product_ListJFrame.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Product_ListJFrame_Shirts.class.getName());
 
     /**
      * Creates new form Pending_OrdersJFrame
      */
-    public Product_ListJFrame() {
+    public Product_ListJFrame_Shirts() {
         initComponents();
         this.setSize(1250, 670);
         
@@ -204,11 +204,11 @@ public class Product_ListJFrame extends javax.swing.JFrame {
 
         jLabel4.setText("Price:");
         jPanel6.add(jLabel4);
-        jLabel4.setBounds(15, 118, 28, 16);
+        jLabel4.setBounds(15, 118, 50, 16);
 
         jLabel5.setText("Quantity:");
         jPanel6.add(jLabel5);
-        jLabel5.setBounds(15, 143, 47, 16);
+        jLabel5.setBounds(15, 143, 49, 16);
 
         jLabel15.setText("$$$");
         jPanel6.add(jLabel15);
@@ -253,11 +253,11 @@ public class Product_ListJFrame extends javax.swing.JFrame {
 
         jLabel8.setText("Price:");
         jPanel7.add(jLabel8);
-        jLabel8.setBounds(15, 118, 28, 16);
+        jLabel8.setBounds(15, 118, 40, 16);
 
         jLabel9.setText("Quantity:");
         jPanel7.add(jLabel9);
-        jLabel9.setBounds(15, 143, 47, 16);
+        jLabel9.setBounds(15, 143, 49, 16);
 
         jLabel16.setText("$$$");
         jPanel7.add(jLabel16);
@@ -290,11 +290,11 @@ public class Product_ListJFrame extends javax.swing.JFrame {
 
         jLabel12.setText("Price:");
         jPanel8.add(jLabel12);
-        jLabel12.setBounds(15, 118, 28, 16);
+        jLabel12.setBounds(15, 118, 40, 16);
 
         jLabel13.setText("Quantity:");
         jPanel8.add(jLabel13);
-        jLabel13.setBounds(15, 143, 47, 16);
+        jLabel13.setBounds(15, 143, 49, 16);
 
         jLabel17.setText("$$$");
         jPanel8.add(jLabel17);
@@ -327,11 +327,11 @@ public class Product_ListJFrame extends javax.swing.JFrame {
 
         jLabel19.setText("Price:");
         jPanel9.add(jLabel19);
-        jLabel19.setBounds(15, 118, 28, 16);
+        jLabel19.setBounds(15, 118, 40, 16);
 
         jLabel20.setText("Quantity:");
         jPanel9.add(jLabel20);
-        jLabel20.setBounds(15, 143, 47, 16);
+        jLabel20.setBounds(15, 143, 49, 16);
 
         jLabel21.setText("$$$");
         jPanel9.add(jLabel21);
@@ -364,11 +364,11 @@ public class Product_ListJFrame extends javax.swing.JFrame {
 
         jLabel24.setText("Price:");
         jPanel10.add(jLabel24);
-        jLabel24.setBounds(15, 118, 28, 16);
+        jLabel24.setBounds(15, 118, 50, 16);
 
         jLabel25.setText("Quantity:");
         jPanel10.add(jLabel25);
-        jLabel25.setBounds(15, 143, 47, 16);
+        jLabel25.setBounds(15, 143, 49, 16);
 
         jLabel26.setText("$$$");
         jPanel10.add(jLabel26);
@@ -401,11 +401,11 @@ public class Product_ListJFrame extends javax.swing.JFrame {
 
         jLabel29.setText("Price:");
         jPanel11.add(jLabel29);
-        jLabel29.setBounds(15, 118, 28, 16);
+        jLabel29.setBounds(15, 118, 40, 16);
 
         jLabel30.setText("Quantity:");
         jPanel11.add(jLabel30);
-        jLabel30.setBounds(15, 143, 47, 16);
+        jLabel30.setBounds(15, 143, 49, 16);
 
         jLabel31.setText("$$$");
         jPanel11.add(jLabel31);
@@ -436,7 +436,7 @@ public class Product_ListJFrame extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 988, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -480,7 +480,7 @@ public class Product_ListJFrame extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // Open the Product List window
-        Product_ListJFrame productPage = new Product_ListJFrame();
+        Product_ListJFrame_Shirts productPage = new Product_ListJFrame_Shirts();
         productPage.setVisible(true);
 
         // Close the current window
@@ -510,7 +510,12 @@ public class Product_ListJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        // Go to Shirts Panel
+        Product_ListJFrame_Shirts productPage = new Product_ListJFrame_Shirts();
+        productPage.setVisible(true);
+
+        // Close the current panel
+        this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -518,11 +523,21 @@ public class Product_ListJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+        // Go to Dresses Panel
+        Product_ListJFrame_Dresses productPage = new Product_ListJFrame_Dresses();
+        productPage.setVisible(true);
+
+        // Close the current panel
+        this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        // Go to Pants Panel
+        Product_ListJFrame_Pants productPage = new Product_ListJFrame_Pants();
+        productPage.setVisible(true);
+
+        // Close the current panel
+        this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -567,7 +582,7 @@ public class Product_ListJFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Product_ListJFrame().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new Product_ListJFrame_Shirts().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
