@@ -58,7 +58,6 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
-        Sizes = new javax.swing.JComboBox<>();
         jPanel7 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -99,7 +98,7 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
         jSpinner6 = new javax.swing.JSpinner();
         jButton13 = new javax.swing.JButton();
         jLabel32 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(1000, 600));
@@ -110,7 +109,9 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
         jButton1.setText("Cart");
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
+        jButton2.setBackground(new java.awt.Color(102, 51, 0));
         jButton2.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Product List");
         jButton2.addActionListener(this::jButton2ActionPerformed);
 
@@ -159,7 +160,7 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Product List Pants");
+        jLabel1.setText("Product List");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -167,7 +168,7 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -184,7 +185,9 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setLayout(null);
 
+        jButton6.setBackground(new java.awt.Color(177, 108, 25));
         jButton6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Pants");
         jButton6.addActionListener(this::jButton6ActionPerformed);
         jPanel5.add(jButton6);
@@ -205,7 +208,7 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
 
         jLabel4.setText("Price:");
         jPanel6.add(jLabel4);
-        jLabel4.setBounds(15, 118, 40, 16);
+        jLabel4.setBounds(15, 118, 29, 16);
 
         jLabel5.setText("Quantity:");
         jPanel6.add(jLabel5);
@@ -225,10 +228,10 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
         jPanel6.add(jButton8);
         jButton8.setBounds(10, 180, 222, 34);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Product_List/12.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Product_List/Pants/12.png"))); // NOI18N
         jLabel7.setText("jLabel7");
         jPanel6.add(jLabel7);
-        jLabel7.setBounds(70, 0, 100, 16);
+        jLabel7.setBounds(70, 0, 100, 100);
 
         jPanel5.add(jPanel6);
         jPanel6.setBounds(370, 320, 240, 220);
@@ -239,11 +242,6 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
         jPanel5.add(jButton5);
         jButton5.setBounds(20, 16, 107, 32);
 
-        Sizes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        Sizes.addActionListener(this::SizesActionPerformed);
-        jPanel5.add(Sizes);
-        Sizes.setBounds(389, 20, 72, 22);
-
         jPanel7.setBackground(new java.awt.Color(242, 227, 202));
         jPanel7.setLayout(null);
 
@@ -253,7 +251,7 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
 
         jLabel8.setText("Price:");
         jPanel7.add(jLabel8);
-        jLabel8.setBounds(15, 118, 40, 16);
+        jLabel8.setBounds(15, 118, 29, 16);
 
         jLabel9.setText("Quantity:");
         jPanel7.add(jLabel9);
@@ -273,10 +271,10 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
         jPanel7.add(jButton9);
         jButton9.setBounds(10, 180, 222, 34);
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Product_List/7.png"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Product_List/Pants/7.png"))); // NOI18N
         jLabel10.setText("jLabel7");
         jPanel7.add(jLabel10);
-        jLabel10.setBounds(70, 0, 100, 16);
+        jLabel10.setBounds(70, 10, 100, 90);
 
         jPanel5.add(jPanel7);
         jPanel7.setBounds(60, 80, 240, 220);
@@ -290,7 +288,7 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
 
         jLabel12.setText("Price:");
         jPanel8.add(jLabel12);
-        jLabel12.setBounds(15, 118, 40, 16);
+        jLabel12.setBounds(15, 118, 29, 16);
 
         jLabel13.setText("Quantity:");
         jPanel8.add(jLabel13);
@@ -310,10 +308,10 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
         jPanel8.add(jButton10);
         jButton10.setBounds(10, 180, 222, 34);
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Product_List/11.png"))); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Product_List/Pants/11.png"))); // NOI18N
         jLabel14.setText("jLabel7");
         jPanel8.add(jLabel14);
-        jLabel14.setBounds(70, 0, 100, 16);
+        jLabel14.setBounds(70, 0, 100, 100);
 
         jPanel5.add(jPanel8);
         jPanel8.setBounds(60, 320, 240, 220);
@@ -327,7 +325,7 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
 
         jLabel19.setText("Price:");
         jPanel9.add(jLabel19);
-        jLabel19.setBounds(15, 118, 40, 16);
+        jLabel19.setBounds(15, 118, 29, 16);
 
         jLabel20.setText("Quantity:");
         jPanel9.add(jLabel20);
@@ -347,10 +345,10 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
         jPanel9.add(jButton11);
         jButton11.setBounds(10, 180, 222, 34);
 
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Product_List/99.png"))); // NOI18N
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Product_List/Pants/99.png"))); // NOI18N
         jLabel22.setText("jLabel7");
         jPanel9.add(jLabel22);
-        jLabel22.setBounds(70, 0, 100, 16);
+        jLabel22.setBounds(70, 0, 100, 100);
 
         jPanel5.add(jPanel9);
         jPanel9.setBounds(680, 320, 240, 220);
@@ -364,7 +362,7 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
 
         jLabel24.setText("Price:");
         jPanel10.add(jLabel24);
-        jLabel24.setBounds(15, 118, 40, 16);
+        jLabel24.setBounds(15, 118, 29, 16);
 
         jLabel25.setText("Quantity:");
         jPanel10.add(jLabel25);
@@ -384,10 +382,10 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
         jPanel10.add(jButton12);
         jButton12.setBounds(10, 180, 222, 34);
 
-        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Product_List/10.png"))); // NOI18N
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Product_List/Pants/10.png"))); // NOI18N
         jLabel27.setText("jLabel7");
         jPanel10.add(jLabel27);
-        jLabel27.setBounds(70, 0, 100, 16);
+        jLabel27.setBounds(70, 0, 100, 100);
 
         jPanel5.add(jPanel10);
         jPanel10.setBounds(680, 80, 240, 220);
@@ -401,7 +399,7 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
 
         jLabel29.setText("Price:");
         jPanel11.add(jLabel29);
-        jLabel29.setBounds(15, 118, 40, 16);
+        jLabel29.setBounds(15, 118, 29, 16);
 
         jLabel30.setText("Quantity:");
         jPanel11.add(jLabel30);
@@ -421,19 +419,19 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
         jPanel11.add(jButton13);
         jButton13.setBounds(10, 180, 222, 34);
 
-        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Product_List/8.png"))); // NOI18N
+        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Product_List/Pants/8.png"))); // NOI18N
         jLabel32.setText("jLabel7");
         jPanel11.add(jLabel32);
-        jLabel32.setBounds(70, 0, 100, 16);
+        jLabel32.setBounds(70, 0, 100, 100);
 
         jPanel5.add(jPanel11);
         jPanel11.setBounds(370, 80, 240, 220);
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sizes", "Small", "Medium", "Large" }));
-        jComboBox1.addActionListener(this::jComboBox1ActionPerformed);
-        jPanel5.add(jComboBox1);
-        jComboBox1.setBounds(389, 20, 80, 22);
+        jComboBox2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sizes", "Small", "Medium", "Large" }));
+        jComboBox2.addActionListener(this::jComboBox2ActionPerformed);
+        jPanel5.add(jComboBox2);
+        jComboBox2.setBounds(389, 20, 80, 22);
 
         jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 970, 560));
 
@@ -562,13 +560,13 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton13ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
     private void SizesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SizesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SizesActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -596,7 +594,6 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> Sizes;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -610,7 +607,7 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

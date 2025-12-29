@@ -58,7 +58,9 @@ public class CartJFrame extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(242, 227, 202));
 
+        jButton1.setBackground(new java.awt.Color(102, 51, 0));
         jButton1.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Cart");
         jButton1.addActionListener(this::jButton1ActionPerformed);
 

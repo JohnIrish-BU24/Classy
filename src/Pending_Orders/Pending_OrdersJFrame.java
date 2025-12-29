@@ -64,7 +64,9 @@ public class Pending_OrdersJFrame extends javax.swing.JFrame {
         jButton2.setText("Product List");
         jButton2.addActionListener(this::jButton2ActionPerformed);
 
+        jButton3.setBackground(new java.awt.Color(102, 51, 0));
         jButton3.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Pending Orders");
         jButton3.addActionListener(this::jButton3ActionPerformed);
 

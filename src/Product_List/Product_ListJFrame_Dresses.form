@@ -103,8 +103,14 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="33" red="66" type="rgb"/>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tw Cen MT" size="18" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Product List"/>
           </Properties>
@@ -253,8 +259,14 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton7">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="19" green="6c" red="b1" type="rgb"/>
+                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="12" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Dresses"/>
                   </Properties>
@@ -355,13 +367,13 @@
                     <Component class="javax.swing.JLabel" name="jLabel7">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/Product_List/18.png"/>
+                          <Image iconType="3" name="/Product_List/Dresses/17.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="jLabel7"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="70" y="0" width="100" height="-1"/>
+                          <AbsoluteConstraints x="70" y="0" width="100" height="100"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -497,13 +509,13 @@
                     <Component class="javax.swing.JLabel" name="jLabel10">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/Product_List/13.png"/>
+                          <Image iconType="3" name="/Product_List/Dresses/13.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="jLabel7"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="70" y="0" width="100" height="-1"/>
+                          <AbsoluteConstraints x="70" y="0" width="100" height="100"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -597,13 +609,13 @@
                     <Component class="javax.swing.JLabel" name="jLabel14">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/Product_List/16.png"/>
+                          <Image iconType="3" name="/Product_List/Dresses/16.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="jLabel7"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="70" y="0" width="100" height="-1"/>
+                          <AbsoluteConstraints x="70" y="0" width="100" height="100"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -697,13 +709,13 @@
                     <Component class="javax.swing.JLabel" name="jLabel22">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/Product_List/17.png"/>
+                          <Image iconType="3" name="/Product_List/Dresses/18.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="jLabel7"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="70" y="0" width="100" height="-1"/>
+                          <AbsoluteConstraints x="70" y="0" width="100" height="100"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -741,7 +753,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="15" y="118" width="40" height="-1"/>
+                          <AbsoluteConstraints x="15" y="118" width="-1" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -797,13 +809,13 @@
                     <Component class="javax.swing.JLabel" name="jLabel27">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/Product_List/15.png"/>
+                          <Image iconType="3" name="/Product_List/Dresses/15.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="jLabel7"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="70" y="0" width="100" height="-1"/>
+                          <AbsoluteConstraints x="70" y="0" width="100" height="100"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -897,13 +909,13 @@
                     <Component class="javax.swing.JLabel" name="jLabel32">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/Product_List/14.png"/>
+                          <Image iconType="3" name="/Product_List/Dresses/14.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="jLabel7"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="70" y="0" width="100" height="-1"/>
+                          <AbsoluteConstraints x="70" y="0" width="100" height="100"/>
                         </Constraint>
                       </Constraints>
                     </Component>
