@@ -1,10 +1,10 @@
-Cat Shirt 399 50
-Varsity 499 25
+Cat Shirt 399 45
+Varsity 499 21
 Mountain 349 40
 Stripes 399 30
 Cowgirl 249 10
 Khaki Cat 399 5
-Black Pants 799 20
+Black Pants 799 18
 Star Pants 799 20
 Hiphop 549 10
 White Pants 599 20
@@ -16,7 +16,3 @@ Floral Pink 899 5
 Black Dress 849 15
 Blue 649 20
 Black Pink 799 10
-
-
-
-

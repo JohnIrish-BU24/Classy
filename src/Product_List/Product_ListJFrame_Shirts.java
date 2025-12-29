@@ -267,7 +267,7 @@ private void displayProductInfo() {
 
         jLabel3.setText("Product ID");
         jPanel6.add(jLabel3);
-        jLabel3.setBounds(100, 100, 56, 16);
+        jLabel3.setBounds(100, 100, 57, 16);
 
         jLabel4.setText("Price:");
         jPanel6.add(jLabel4);
@@ -275,11 +275,13 @@ private void displayProductInfo() {
 
         jLabel5.setText("Quantity:");
         jPanel6.add(jLabel5);
-        jLabel5.setBounds(15, 143, 47, 16);
+        jLabel5.setBounds(15, 143, 48, 16);
 
         jLabel15.setText("$$$");
         jPanel6.add(jLabel15);
         jLabel15.setBounds(49, 118, 43, 16);
+
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jPanel6.add(jSpinner1);
         jSpinner1.setBounds(68, 140, 64, 22);
 
@@ -319,14 +321,14 @@ private void displayProductInfo() {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sizes", "Small", "Medium", "Large" }));
         jComboBox1.addActionListener(this::jComboBox1ActionPerformed);
         jPanel5.add(jComboBox1);
-        jComboBox1.setBounds(389, 20, 80, 22);
+        jComboBox1.setBounds(389, 20, 81, 22);
 
         jPanel7.setBackground(new java.awt.Color(242, 227, 202));
         jPanel7.setLayout(null);
 
         jLabel6.setText("Product ID");
         jPanel7.add(jLabel6);
-        jLabel6.setBounds(90, 100, 56, 16);
+        jLabel6.setBounds(90, 100, 57, 16);
 
         jLabel8.setText("Price:");
         jPanel7.add(jLabel8);
@@ -334,11 +336,13 @@ private void displayProductInfo() {
 
         jLabel9.setText("Quantity:");
         jPanel7.add(jLabel9);
-        jLabel9.setBounds(15, 143, 47, 16);
+        jLabel9.setBounds(15, 143, 48, 16);
 
         jLabel16.setText("$$$");
         jPanel7.add(jLabel16);
         jLabel16.setBounds(49, 118, 43, 16);
+
+        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jPanel7.add(jSpinner2);
         jSpinner2.setBounds(68, 140, 64, 22);
 
@@ -371,7 +375,7 @@ private void displayProductInfo() {
 
         jLabel11.setText("Product ID");
         jPanel8.add(jLabel11);
-        jLabel11.setBounds(100, 100, 56, 16);
+        jLabel11.setBounds(100, 100, 57, 16);
 
         jLabel12.setText("Price:");
         jPanel8.add(jLabel12);
@@ -379,11 +383,13 @@ private void displayProductInfo() {
 
         jLabel13.setText("Quantity:");
         jPanel8.add(jLabel13);
-        jLabel13.setBounds(15, 143, 47, 16);
+        jLabel13.setBounds(15, 143, 48, 16);
 
         jLabel17.setText("$$$");
         jPanel8.add(jLabel17);
         jLabel17.setBounds(49, 118, 43, 16);
+
+        jSpinner3.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jPanel8.add(jSpinner3);
         jSpinner3.setBounds(68, 140, 64, 22);
 
@@ -416,7 +422,7 @@ private void displayProductInfo() {
 
         jLabel18.setText("Product ID");
         jPanel9.add(jLabel18);
-        jLabel18.setBounds(90, 100, 56, 16);
+        jLabel18.setBounds(90, 100, 57, 16);
 
         jLabel19.setText("Price:");
         jPanel9.add(jLabel19);
@@ -424,11 +430,13 @@ private void displayProductInfo() {
 
         jLabel20.setText("Quantity:");
         jPanel9.add(jLabel20);
-        jLabel20.setBounds(15, 143, 47, 16);
+        jLabel20.setBounds(15, 143, 48, 16);
 
         jLabel21.setText("$$$");
         jPanel9.add(jLabel21);
         jLabel21.setBounds(49, 118, 43, 16);
+
+        jSpinner4.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jPanel9.add(jSpinner4);
         jSpinner4.setBounds(68, 140, 64, 22);
 
@@ -461,7 +469,7 @@ private void displayProductInfo() {
 
         jLabel23.setText("Product ID");
         jPanel10.add(jLabel23);
-        jLabel23.setBounds(100, 100, 56, 16);
+        jLabel23.setBounds(100, 100, 57, 16);
 
         jLabel24.setText("Price:");
         jPanel10.add(jLabel24);
@@ -469,11 +477,13 @@ private void displayProductInfo() {
 
         jLabel25.setText("Quantity:");
         jPanel10.add(jLabel25);
-        jLabel25.setBounds(15, 143, 47, 16);
+        jLabel25.setBounds(15, 143, 48, 16);
 
         jLabel26.setText("$$$");
         jPanel10.add(jLabel26);
         jLabel26.setBounds(49, 118, 43, 16);
+
+        jSpinner5.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jPanel10.add(jSpinner5);
         jSpinner5.setBounds(68, 140, 64, 22);
 
@@ -506,7 +516,7 @@ private void displayProductInfo() {
 
         jLabel28.setText("Product ID");
         jPanel11.add(jLabel28);
-        jLabel28.setBounds(100, 100, 56, 16);
+        jLabel28.setBounds(100, 100, 57, 16);
 
         jLabel29.setText("Price:");
         jPanel11.add(jLabel29);
@@ -514,11 +524,13 @@ private void displayProductInfo() {
 
         jLabel30.setText("Quantity:");
         jPanel11.add(jLabel30);
-        jLabel30.setBounds(15, 143, 47, 16);
+        jLabel30.setBounds(15, 143, 48, 16);
 
         jLabel31.setText("$$$");
         jPanel11.add(jLabel31);
         jLabel31.setBounds(49, 118, 43, 16);
+
+        jSpinner6.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jPanel11.add(jSpinner6);
         jSpinner6.setBounds(68, 140, 64, 22);
 
@@ -639,6 +651,11 @@ private void displayProductInfo() {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
+        String name = "Cowgirl"; 
+        int qty = (Integer) jSpinner1.getValue(); // Spinner 3
+        String size = jComboBox1.getSelectedItem().toString(); 
+        classy.Classy.addToCart(this, name, size, qty);
+        jSpinner1.setValue(0);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -661,22 +678,47 @@ private void displayProductInfo() {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
+        String name = "Cat Shirt"; 
+        int qty = (Integer) jSpinner2.getValue(); // Spinner 1
+        String size = jComboBox1.getSelectedItem().toString(); // Top Dropdown
+        classy.Classy.addToCart(this, name, size, qty);
+        jSpinner2.setValue(0);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
+        String name = "Stripes"; 
+        int qty = (Integer) jSpinner3.getValue(); // Spinner 3
+        String size = jComboBox1.getSelectedItem().toString(); 
+        classy.Classy.addToCart(this, name, size, qty);
+        jSpinner3.setValue(0);
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
+        String name = "Khaki Cat"; 
+        int qty = (Integer) jSpinner4.getValue(); // Spinner 3
+        String size = jComboBox1.getSelectedItem().toString(); 
+        classy.Classy.addToCart(this, name, size, qty);
+        jSpinner4.setValue(0);
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         // TODO add your handling code here:
+        String name = "Mountain"; 
+        int qty = (Integer) jSpinner5.getValue(); // Spinner 3
+        String size = jComboBox1.getSelectedItem().toString(); 
+        classy.Classy.addToCart(this, name, size, qty);
+        jSpinner5.setValue(0);
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         // TODO add your handling code here:
+        String name = "Varsity"; 
+        int qty = (Integer) jSpinner6.getValue(); // Spinner 2
+        String size = jComboBox1.getSelectedItem().toString(); 
+        classy.Classy.addToCart(this, name, size, qty);
+        jSpinner6.setValue(0);
     }//GEN-LAST:event_jButton13ActionPerformed
 
     /**
