@@ -3,28 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Product_List;
+
 import Cart.CartJFrame;
 import Pending_Orders.Pending_OrdersJFrame;
 import LogIn.LogInJFrame;
-
 import java.io.File;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 import java.util.HashMap;
 
-/**
- *
- * @author milal
- */
 public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Product_ListJFrame_Shirts.class.getName());
 
-    private HashMap<String, String> productMap = new HashMap<>();
+    private HashMap<String, String[]> productMap = new HashMap<>();
     
-    /**
-     * Creates new form Pending_OrdersJFrame
-     */
     public Product_ListJFrame_Shirts() {
         initComponents();
         
@@ -39,53 +32,52 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
     
     public void loadProductData() {
         try {
-            // Ensure this file is in your main Project folder (the "Classy" folder)
-            File file = new File("Classy Product List [productID, price].txt");
+            File file = new File("inventory.txt");
             Scanner reader = new Scanner(file);
             while (reader.hasNextLine()) {
                 String line = reader.nextLine().trim();
                 if (line.isEmpty()) continue;
 
-                // Splits "cat_shirt 399" into ["cat_shirt", "399"]
-                String[] parts = line.split(" "); 
-                if (parts.length >= 2) {
-                    productMap.put(parts[0], parts[1]); 
+                // Logic to handle spaces in names and the new stock column
+                String[] parts = line.split(" ");
+                if (parts.length >= 3) {
+                    String stock = parts[parts.length - 1]; // Last item is stock
+                    String price = parts[parts.length - 2]; // Second to last is price
+                    
+                    // Reconstruct the name if it has spaces (e.g., "Cat Shirt")
+                    StringBuilder idBuilder = new StringBuilder();
+                    for (int i = 0; i < parts.length - 2; i++) {
+                        idBuilder.append(parts[i]).append(i == parts.length - 3 ? "" : " ");
+                    }
+                    String id = idBuilder.toString();
+                    
+                    productMap.put(id, new String[]{price, stock});
                 }
             }
             reader.close();
-            displayProductInfo(); // Updates your labels once loading is done
+            displayProductInfo(); 
         } catch (Exception e) {
-            System.out.println("File not found! Make sure the .txt is in the root project folder.");
+            System.out.println("Error reading file: " + e.getMessage());
         }
     }
 
-    // New Method to set text to your JLabels
 private void displayProductInfo() {
-        // UPDATED KEYS: These must match your new TXT file exactly!
-        
-        // Panel 7: Cat Shirt
-        jLabel6.setText("Cat Shirt");
-        jLabel16.setText(productMap.getOrDefault("Cat Shirt", "0"));
+    
+        updateLabel("Cat Shirt", jLabel6, jLabel16, jLabel36);
+        updateLabel("Varsity", jLabel28, jLabel31, jLabel42);
+        updateLabel("Mountain", jLabel23, jLabel26, jLabel43);
+        updateLabel("Stripes", jLabel11, jLabel17, jLabel38);
+        updateLabel("Cowgirl", jLabel3, jLabel15, jLabel45);
+        updateLabel("Khaki Cat", jLabel18, jLabel21, jLabel33);
+    }
 
-        // Panel 11: Varsity Shirt
-        jLabel28.setText("Varsity");
-        jLabel31.setText(productMap.getOrDefault("Varsity", "0"));
-
-        // Panel 10: Mountain
-        jLabel23.setText("Mountain");
-        jLabel26.setText(productMap.getOrDefault("Mountain", "0"));
-
-        // Panel 8: Khaki Stripes
-        jLabel11.setText("Khaki");
-        jLabel17.setText(productMap.getOrDefault("Stripes", "0"));
-
-        // Panel 6: Cowgirl
-        jLabel3.setText("Cowgirl");
-        jLabel15.setText(productMap.getOrDefault("Cowgirl", "0"));
-
-        // Panel 9: Khaki Cat
-        jLabel18.setText("Khaki Cat");
-        jLabel21.setText(productMap.getOrDefault("Khaki Cat", "0"));
+    private void updateLabel(String id, javax.swing.JLabel idLbl, javax.swing.JLabel priceLbl, javax.swing.JLabel stockLbl) {
+        if (productMap.containsKey(id)) {
+            String[] data = productMap.get(id);
+            idLbl.setText(id);
+            priceLbl.setText(data[0]);
+            stockLbl.setText(data[1]);
+        }
     }
 
     /**
@@ -118,6 +110,8 @@ private void displayProductInfo() {
         jSpinner1 = new javax.swing.JSpinner();
         jButton8 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jPanel7 = new javax.swing.JPanel();
@@ -128,6 +122,8 @@ private void displayProductInfo() {
         jSpinner2 = new javax.swing.JSpinner();
         jButton9 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -136,6 +132,8 @@ private void displayProductInfo() {
         jSpinner3 = new javax.swing.JSpinner();
         jButton10 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -144,6 +142,8 @@ private void displayProductInfo() {
         jSpinner4 = new javax.swing.JSpinner();
         jButton11 = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
@@ -152,6 +152,8 @@ private void displayProductInfo() {
         jSpinner5 = new javax.swing.JSpinner();
         jButton12 = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
@@ -160,6 +162,8 @@ private void displayProductInfo() {
         jSpinner6 = new javax.swing.JSpinner();
         jButton13 = new javax.swing.JButton();
         jLabel32 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(1000, 600));
@@ -292,6 +296,14 @@ private void displayProductInfo() {
         jPanel6.add(jLabel7);
         jLabel7.setBounds(70, 0, 100, 100);
 
+        jLabel41.setText("Stock:");
+        jPanel6.add(jLabel41);
+        jLabel41.setBounds(160, 120, 43, 16);
+
+        jLabel45.setText("#");
+        jPanel6.add(jLabel45);
+        jLabel45.setBounds(200, 120, 30, 16);
+
         jPanel5.add(jPanel6);
         jPanel6.setBounds(370, 320, 240, 220);
 
@@ -343,6 +355,14 @@ private void displayProductInfo() {
         jPanel7.add(jLabel10);
         jLabel10.setBounds(70, 0, 100, 100);
 
+        jLabel35.setText("Stock:");
+        jPanel7.add(jLabel35);
+        jLabel35.setBounds(150, 120, 43, 16);
+
+        jLabel36.setText("#");
+        jPanel7.add(jLabel36);
+        jLabel36.setBounds(190, 120, 43, 16);
+
         jPanel5.add(jPanel7);
         jPanel7.setBounds(60, 80, 240, 220);
 
@@ -379,6 +399,14 @@ private void displayProductInfo() {
         jLabel14.setText("jLabel7");
         jPanel8.add(jLabel14);
         jLabel14.setBounds(70, 0, 100, 100);
+
+        jLabel37.setText("Stock:");
+        jPanel8.add(jLabel37);
+        jLabel37.setBounds(160, 120, 43, 16);
+
+        jLabel38.setText("#");
+        jPanel8.add(jLabel38);
+        jLabel38.setBounds(200, 120, 30, 16);
 
         jPanel5.add(jPanel8);
         jPanel8.setBounds(60, 320, 240, 220);
@@ -417,6 +445,14 @@ private void displayProductInfo() {
         jPanel9.add(jLabel22);
         jLabel22.setBounds(70, 0, 100, 100);
 
+        jLabel40.setText("Stock:");
+        jPanel9.add(jLabel40);
+        jLabel40.setBounds(150, 120, 43, 16);
+
+        jLabel33.setText("#");
+        jPanel9.add(jLabel33);
+        jLabel33.setBounds(190, 120, 40, 16);
+
         jPanel5.add(jPanel9);
         jPanel9.setBounds(680, 320, 240, 220);
 
@@ -454,6 +490,14 @@ private void displayProductInfo() {
         jPanel10.add(jLabel27);
         jLabel27.setBounds(70, 0, 100, 100);
 
+        jLabel39.setText("Stock:");
+        jPanel10.add(jLabel39);
+        jLabel39.setBounds(160, 120, 43, 16);
+
+        jLabel43.setText("#");
+        jPanel10.add(jLabel43);
+        jLabel43.setBounds(200, 120, 30, 16);
+
         jPanel5.add(jPanel10);
         jPanel10.setBounds(680, 80, 240, 220);
 
@@ -490,6 +534,14 @@ private void displayProductInfo() {
         jLabel32.setText("jLabel7");
         jPanel11.add(jLabel32);
         jLabel32.setBounds(70, 0, 100, 100);
+
+        jLabel34.setText("Stock:");
+        jPanel11.add(jLabel34);
+        jLabel34.setBounds(160, 120, 40, 16);
+
+        jLabel42.setText("#");
+        jPanel11.add(jLabel42);
+        jLabel42.setBounds(200, 120, 30, 16);
 
         jPanel5.add(jPanel11);
         jPanel11.setBounds(370, 80, 240, 220);
@@ -693,7 +745,19 @@ private void displayProductInfo() {
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
