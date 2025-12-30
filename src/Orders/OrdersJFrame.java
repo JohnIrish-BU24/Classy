@@ -2,23 +2,33 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Pending_Orders;
+package Orders;
 import Product_List.Product_ListJFrame_Shirts;
 import Cart.CartJFrame;
 import LogIn.LogInJFrame;
+
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JTable;
+import javax.swing.JOptionPane;
+import javax.swing.table.TableCellRenderer;
 
 /**
  *
  * @author milal
  */
-public class Pending_OrdersJFrame extends javax.swing.JFrame {
+public class OrdersJFrame extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Pending_OrdersJFrame.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(OrdersJFrame.class.getName());
 
     /**
      * Creates new form Pending_OrdersJFrame
      */
-    public Pending_OrdersJFrame() {
+    public OrdersJFrame() {
         initComponents();
         
         this.setSize(1250, 670);
@@ -26,6 +36,17 @@ public class Pending_OrdersJFrame extends javax.swing.JFrame {
         this.setResizable(false);
         
         this.setLocationRelativeTo(null);
+        
+        jTable1.setRowHeight(40);
+        jTable1.getColumnModel().getColumn(3).setPreferredWidth(100);
+        jTable1.getColumnModel().getColumn(3).setMinWidth(100);
+        jTable1.getColumnModel().getColumn(3).setMaxWidth(100);
+        
+        // Set the renderer and editor for the specific column index (e.g., 4)
+        jTable1.getColumnModel().getColumn(3).setCellRenderer(new ButtonRenderer());
+        jTable1.getColumnModel().getColumn(3).setCellEditor(new ButtonEditor(new javax.swing.JCheckBox(), jTable1));
+        
+        loadOrdersTable();
     }
 
     /**
@@ -50,6 +71,7 @@ public class Pending_OrdersJFrame extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(1000, 600));
@@ -67,7 +89,7 @@ public class Pending_OrdersJFrame extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(102, 51, 0));
         jButton3.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Pending Orders");
+        jButton3.setText("Orders");
         jButton3.addActionListener(this::jButton3ActionPerformed);
 
         jButton4.setBackground(new java.awt.Color(242, 227, 202));
@@ -75,7 +97,7 @@ public class Pending_OrdersJFrame extends javax.swing.JFrame {
         jButton4.setText("Log Out");
         jButton4.addActionListener(this::jButton4ActionPerformed);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pending_Orders/Logo2.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Orders/Logo2.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -111,7 +133,7 @@ public class Pending_OrdersJFrame extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Pending Orders");
+        jLabel1.setText("Orders");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -134,21 +156,17 @@ public class Pending_OrdersJFrame extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "#", "Order Tracker", "Total", "Status"
+                "Date and Time", "Tracker", "Total", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -159,6 +177,7 @@ public class Pending_OrdersJFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setResizable(false);
@@ -167,15 +186,29 @@ public class Pending_OrdersJFrame extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(3).setResizable(false);
         }
 
+        jButton5.setBackground(new java.awt.Color(204, 0, 0));
+        jButton5.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("Delete All");
+        jButton5.addActionListener(this::jButton5ActionPerformed);
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 974, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -205,7 +238,7 @@ public class Pending_OrdersJFrame extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -229,8 +262,8 @@ public class Pending_OrdersJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -256,7 +289,7 @@ public class Pending_OrdersJFrame extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // Open the Pending Orders window
-        Pending_OrdersJFrame orderPage = new Pending_OrdersJFrame();
+        OrdersJFrame orderPage = new OrdersJFrame();
         orderPage.setVisible(true);
 
         // Close the current window
@@ -272,6 +305,89 @@ public class Pending_OrdersJFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        int confirm = JOptionPane.showConfirmDialog(this, "Delete all transaction history?", "Confirm", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            try {
+                // Clear both files
+                new java.io.FileWriter("Receipt.txt", false).close(); 
+                new java.io.FileWriter("OrderDetails.txt", false).close(); 
+
+                loadOrdersTable(); // Refresh the visual table
+                JOptionPane.showMessageDialog(this, "All history and details cleared.");
+            } catch (java.io.IOException e) { 
+                JOptionPane.showMessageDialog(this, "Error clearing history: " + e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+public static String processCheckout(java.awt.Component parent) {
+    String date = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());
+    String time = new java.text.SimpleDateFormat("HH:mm:ss").format(new java.util.Date());
+    String tracker = "CLS-" + (int)(Math.random()*9000 + 1000) + (char)((int)(Math.random()*26)+65);
+    
+    StringBuilder terminalReceipt = new StringBuilder(); // For Terminal/UI display
+    double grandTotal = 0;
+
+    try {
+        java.io.File cartFile = new java.io.File("Cart.txt");
+        java.util.Scanner scanner = new java.util.Scanner(cartFile);
+        
+        // File 1: OrderDetails.txt (The "Tracker File" for items)
+        java.io.FileWriter fwDetails = new java.io.FileWriter("OrderDetails.txt", true);
+
+        while (scanner.hasNextLine()) {
+            String[] parts = scanner.nextLine().split(",");
+            classy.Product item = new classy.Product(parts[0], Integer.parseInt(parts[2]), Double.parseDouble(parts[3]), parts[1]);
+            double itemTotal = item.getPrice() * item.getQuantity();
+            grandTotal += itemTotal;
+
+            // Write to Tracker File
+            fwDetails.write(tracker + "," + item.getName() + "," + item.getSize() + "," + 
+                            item.getQuantity() + "," + item.getPrice() + "," + itemTotal + "\n");
+            
+            terminalReceipt.append(String.format("%-15s x%-3d ₱%-10.2f\n", item.getName(), item.getQuantity(), itemTotal));
+        }
+        scanner.close();
+        fwDetails.close();
+
+        // File 2: Receipt.txt (The "Header File" for the table)
+        java.io.FileWriter fwReceipt = new java.io.FileWriter("Receipt.txt", true);
+        fwReceipt.write(date + "," + time + "," + tracker + "," + grandTotal + "\n");
+        fwReceipt.close();
+
+        // --- UPDATED LAYOUT LOGIC ---
+        StringBuilder fullReceipt = new StringBuilder();
+        fullReceipt.append("-------- CLASSy Receipt --------\n");
+        fullReceipt.append("Date: ").append(date).append(" Time: ").append(time).append("\n");
+        fullReceipt.append("Order: ").append(tracker).append("\n");
+        fullReceipt.append("--------------------------------\n");
+        fullReceipt.append(String.format("%-15s %-5s %-10s\n", "Item", "Qty", "Total (₱)"));
+        
+        // Add the items we just processed
+        fullReceipt.append(terminalReceipt.toString());
+        
+        fullReceipt.append("--------------------------------\n");
+        fullReceipt.append(String.format("Grand Total: ₱%.2f\n", grandTotal));
+
+        // Create the Centered Panel
+        javax.swing.JTextArea area = new javax.swing.JTextArea(fullReceipt.toString());
+        area.setEditable(false);
+        area.setFont(new java.awt.Font("Monospaced", java.awt.Font.PLAIN, 12)); // Forces alignment
+        
+        javax.swing.JScrollPane scrollPane = new javax.swing.JScrollPane(area);
+
+        // Show the panel (Centered over the parent frame)
+        javax.swing.JOptionPane.showMessageDialog(parent, scrollPane, "Order Receipt", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+
+        System.out.println(fullReceipt.toString()); // Log to terminal
+        return fullReceipt.toString(); 
+
+    } catch (Exception e) {
+        return "Error: " + e.getMessage();
+    }
+}
+    
     /**
      * @param args the command line arguments
      */
@@ -294,7 +410,7 @@ public class Pending_OrdersJFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Pending_OrdersJFrame().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new OrdersJFrame().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -302,6 +418,7 @@ public class Pending_OrdersJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -312,4 +429,109 @@ public class Pending_OrdersJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    public void loadOrdersTable() {
+        javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        java.io.File file = new java.io.File("Receipt.txt");
+        if (!file.exists()) return;
+
+        try (java.util.Scanner scanner = new java.util.Scanner(file)) {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                if (line.trim().isEmpty()) continue;
+                String[] parts = line.split(",");
+                if (parts.length >= 4) {
+                    // Column 0: Date, Column 1: Tracker, Column 2: Grand Total, Column 3: Button Label
+                    model.addRow(new Object[]{parts[0], parts[2], parts[3], "Receipt"});
+                }
+            }
+        } catch (Exception e) { e.printStackTrace(); }
+    }
+}
+
+class ButtonRenderer extends JButton implements TableCellRenderer {
+
+    public ButtonRenderer() {
+        setOpaque(true);
+    }
+
+    @Override
+    public Component getTableCellRendererComponent(JTable table, Object value,
+            boolean isSelected, boolean hasFocus, int row, int column) {
+        
+        // Use the text from the table cell as the button label
+        setText((value == null) ? "Receipt" : value.toString());
+        return this;
+    }
+}
+
+class ButtonEditor extends DefaultCellEditor {
+    protected JButton button;
+    private String label;
+    private boolean isPushed;
+    private JTable table; // Add this variable
+
+    public ButtonEditor(JCheckBox checkBox, JTable table) { // Update constructor
+        super(checkBox);
+        this.table = table; // Store the table reference
+        button = new JButton();
+        button.setOpaque(true);
+        button.addActionListener(e -> fireEditingStopped());
+    }
+
+    @Override
+    public Component getTableCellEditorComponent(JTable table, Object value,
+            boolean isSelected, int row, int column) {
+        label = (value == null) ? "Receipt" : value.toString();
+        button.setText(label);
+        isPushed = true;
+        return button;
+    }
+
+    @Override
+    public Object getCellEditorValue() {
+        if (isPushed) {
+            String trackerToFind = table.getValueAt(table.getSelectedRow(), 1).toString();
+            String date = table.getValueAt(table.getSelectedRow(), 0).toString();
+            String total = table.getValueAt(table.getSelectedRow(), 2).toString();
+
+            StringBuilder layout = new StringBuilder();
+            layout.append("-------- CLASSy Receipt --------\n");
+            layout.append("Date: ").append(date).append("\n");
+            layout.append("Order: ").append(trackerToFind).append("\n");
+            layout.append("--------------------------------\n");
+            // Update header to use ₱
+            layout.append(String.format("%-15s %-5s %-10s\n", "Item", "Qty", "Total (₱)"));
+
+            try {
+                java.util.Scanner detailsScanner = new java.util.Scanner(new java.io.File("OrderDetails.txt"));
+                while (detailsScanner.hasNextLine()) {
+                    String[] d = detailsScanner.nextLine().split(",");
+                    if (d[0].equals(trackerToFind)) {
+                        // Update item total to use ₱
+                        layout.append(String.format("%-15s %-5s ₱%-10s\n", d[1], d[3], d[5]));
+                    }
+                }
+                detailsScanner.close();
+
+                layout.append("--------------------------------\n");
+                // Update summary total to use ₱
+                layout.append("Total Amount: ₱").append(total).append("\n");
+
+                // 3. Display in a formatted TextArea
+                javax.swing.JTextArea area = new javax.swing.JTextArea(layout.toString());
+                area.setFont(new java.awt.Font("Monospaced", 0, 12));
+                area.setEditable(false);
+
+                System.out.println(layout.toString()); // Terminal
+                javax.swing.JOptionPane.showMessageDialog(null, new javax.swing.JScrollPane(area), "View Receipt", 1);
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Error loading details: " + ex.getMessage());
+            }
+        }
+        isPushed = false;
+        return "Receipt";
+    } 
 }

@@ -4,8 +4,14 @@
  */
 package Cart;
 import Product_List.Product_ListJFrame_Shirts;
-import Pending_Orders.Pending_OrdersJFrame;
+import Orders.OrdersJFrame;
 import LogIn.LogInJFrame;
+import java.io.File;
+import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -27,7 +33,7 @@ public class CartJFrame extends javax.swing.JFrame {
         
         this.setLocationRelativeTo(null);
         
-        classy.Classy.loadCartTable(jTable1);
+        loadCartTable(jTable1);
     }
 
     /**
@@ -71,7 +77,7 @@ public class CartJFrame extends javax.swing.JFrame {
         jButton2.addActionListener(this::jButton2ActionPerformed);
 
         jButton3.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
-        jButton3.setText("Pending Orders");
+        jButton3.setText("Orders");
         jButton3.addActionListener(this::jButton3ActionPerformed);
 
         jButton4.setBackground(new java.awt.Color(242, 227, 202));
@@ -281,7 +287,7 @@ public class CartJFrame extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // Open the Pending Orders window
-        Pending_OrdersJFrame orderPage = new Pending_OrdersJFrame();
+        OrdersJFrame orderPage = new OrdersJFrame();
         orderPage.setVisible(true);
 
         // Close the current window
@@ -297,14 +303,28 @@ public class CartJFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    // --- CHECK OUT (Updates Inventory Here!) ---
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        classy.Classy.checkOut(this, jTable1);
+        Orders.OrdersJFrame.processCheckout(this);
+
+        jButton6ActionPerformed(null);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-        classy.Classy.emptyCart(this, jTable1);
+            try {
+            // Clear the physical file
+            new java.io.FileWriter("Cart.txt", false).close();
+
+            // Clear the visual table
+            ((javax.swing.table.DefaultTableModel) jTable1.getModel()).setRowCount(0);
+
+            // Only show the message if the user clicked the button manually
+            if (evt != null) {
+                JOptionPane.showMessageDialog(this, "Cart Emptied.");
+            }
+        } catch (java.io.IOException e) {
+            // Handle error
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
@@ -349,4 +369,40 @@ public class CartJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    // --- LOAD CART TABLE ---
+    public static void loadCartTable(javax.swing.JTable table) {
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setRowCount(0);
+        
+        File file = new File("Cart.txt");
+        if (!file.exists()) return;
+
+        try {
+            Scanner scanner = new Scanner(file);
+            int id = 1;
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                if (line.trim().isEmpty()) continue;
+
+                String[] parts = line.split(",");
+                if (parts.length >= 5) {
+                    // OOP CHANGE: Create a Product object from the text data
+                    // Parameters: name, quantity, price, size
+                    classy.Product item = new classy.Product(parts[0], Integer.parseInt(parts[2]), Double.parseDouble(parts[3]), parts[1]);
+
+                    // ENCAPSULATION: Use Getters to fill the table
+                    model.addRow(new Object[]{
+                        id++, 
+                        item.getName(), 
+                        item.getSize(), 
+                        item.getQuantity(), 
+                        item.getPrice(), 
+                        (item.getPrice() * item.getQuantity()) // Total calculated from object
+                    });
+                }
+            }   
+            scanner.close();
+        } catch (Exception e) {}
+    }
 }
