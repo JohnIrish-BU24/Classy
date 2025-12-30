@@ -666,7 +666,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
 
         // Safety check using your productMap object
         if(productMap.containsKey(name) && qty > 0) {
-            classy.models.Product.addToCart(this, name, size, qty, "Shirts");
+            classy.services.InventoryService.addToCart(this, productName, size, quantity, "Dresses");
             jSpinner1.setValue(0);
         } else {
             JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
@@ -700,7 +700,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
 
         // Safety check using your productMap object
         if(productMap.containsKey(name) && qty > 0) {
-            classy.models.Product.addToCart(this, name, size, qty, "Shirts");
+            classy.services.InventoryService.addToCart(this, productName, size, quantity, "Dresses");
             jSpinner2.setValue(0);
         } else {
             JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
@@ -716,7 +716,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
 
         // Safety check using your productMap object
         if(productMap.containsKey(name) && qty > 0) {
-            classy.models.Product.addToCart(this, name, size, qty, "Shirts");
+            classy.services.InventoryService.addToCart(this, productName, size, quantity, "Dresses");
             jSpinner3.setValue(0);
         } else {
             JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
@@ -732,7 +732,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
 
         // Safety check using your productMap object
         if(productMap.containsKey(name) && qty > 0) {
-            classy.models.Product.addToCart(this, name, size, qty, "Shirts");
+            classy.services.InventoryService.addToCart(this, productName, size, quantity, "Dresses");
             jSpinner4.setValue(0);
         } else {
             JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
@@ -748,7 +748,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
 
         // Safety check using your productMap object
         if(productMap.containsKey(name) && qty > 0) {
-            classy.models.Product.addToCart(this, name, size, qty, "Shirts");
+            classy.services.InventoryService.addToCart(this, productName, size, quantity, "Dresses");
             jSpinner5.setValue(0);
         } else {
             JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
@@ -764,7 +764,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
 
         // Safety check using your productMap object
         if(productMap.containsKey(name) && qty > 0) {
-            classy.models.Product.addToCart(this, name, size, qty, "Shirts");
+            classy.services.InventoryService.addToCart(this, productName, size, quantity, "Dresses");
             jSpinner6.setValue(0);
         } else {
             JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
