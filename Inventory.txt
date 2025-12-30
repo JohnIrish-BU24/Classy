@@ -3,14 +3,14 @@ Varsity 499 21 7 7 7
 Mountain 349 40 10 15 15
 Stripes 399 30 10 10 10
 Cowgirl 249 10 3 3 4
-Khaki Cat 399 3 3 0 0
+Khaki Cat 399 10 3 2 5
 Black Pants 799 10 6 4 0
 Star Pants 799 15 10 0 5
-Hiphop 549 1 0 0 1
-White Pants 599 11 5 5 1
-Jorts 799 16 5 10 1
+Hiphop 549 30 10 10 10
+White Pants 599 15 5 5 5
+Jorts 799 20 5 10 5
 Denim 899 30 10 10 10
-Light Blue 1249 17 10 7 0
+Light Blue 1249 20 10 5 5
 Floral White 849 10 10 0 0
 Floral Pink 899 5 2 3 0
 Black Dress 849 15 5 5 5
