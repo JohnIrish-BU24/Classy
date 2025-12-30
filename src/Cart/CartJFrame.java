@@ -35,7 +35,7 @@ public class CartJFrame extends javax.swing.JFrame {
         
         loadCartTable(jTable1);
     }
-
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -85,7 +85,7 @@ public class CartJFrame extends javax.swing.JFrame {
         jButton4.setText("Log Out");
         jButton4.addActionListener(this::jButton4ActionPerformed);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pending_Orders/Logo2.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Orders/Logo2.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -194,7 +194,7 @@ public class CartJFrame extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 991, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 903, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton6)
@@ -268,62 +268,55 @@ public class CartJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // Open the Cart window
-        CartJFrame productPage = new CartJFrame();
-        productPage.setVisible(true);
-
-        // Close the current window
-        this.dispose();
+        loadCartTable(jTable1);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // Open the Product List window
-        Product_ListJFrame_Shirts productPage = new Product_ListJFrame_Shirts();
-        productPage.setVisible(true);
-
-        // Close the current window
+        
+        new Product_ListJFrame_Shirts().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // Open the Pending Orders window
-        OrdersJFrame orderPage = new OrdersJFrame();
-        orderPage.setVisible(true);
-
-        // Close the current window
+        new OrdersJFrame().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // Go back to Log In window
-        LogInJFrame loginPage = new LogInJFrame();
-        loginPage.setVisible(true);
-
-        // Close the current window
+        new LogInJFrame().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     // --- CHECK OUT (Updates Inventory Here!) ---
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        Orders.OrdersJFrame.processCheckout(this);
+        // 1. Check if the table is empty first
+    if (jTable1.getRowCount() == 0) {
+        JOptionPane.showMessageDialog(this, "Your cart is empty!");
+        return;
+    }
 
-        jButton6ActionPerformed(null);
+    // 2. Run the logic to subtract stock from Inventory.txt
+    Orders.OrdersJFrame.processCheckout(this);
+
+    // 3. Clear the cart (This calls your existing jButton6 logic)
+    jButton6ActionPerformed(null);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-            try {
-            // Clear the physical file
-            new java.io.FileWriter("Cart.txt", false).close();
+        try {
+            // Overwrite Cart.txt with nothing
+            FileWriter fw = new FileWriter("Cart.txt", false);
+            fw.close();
 
-            // Clear the visual table
-            ((javax.swing.table.DefaultTableModel) jTable1.getModel()).setRowCount(0);
+            // Clear JTable
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
 
-            // Only show the message if the user clicked the button manually
             if (evt != null) {
-                JOptionPane.showMessageDialog(this, "Cart Emptied.");
+                JOptionPane.showMessageDialog(this, "Cart has been cleared.");
             }
-        } catch (java.io.IOException e) {
-            // Handle error
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error clearing cart: " + e.getMessage());
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -378,8 +371,7 @@ public class CartJFrame extends javax.swing.JFrame {
         File file = new File("Cart.txt");
         if (!file.exists()) return;
 
-        try {
-            Scanner scanner = new Scanner(file);
+        try (Scanner scanner = new Scanner(file)) {
             int id = 1;
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
@@ -387,22 +379,26 @@ public class CartJFrame extends javax.swing.JFrame {
 
                 String[] parts = line.split(",");
                 if (parts.length >= 5) {
-                    // OOP CHANGE: Create a Product object from the text data
-                    // Parameters: name, quantity, price, size
-                    classy.Product item = new classy.Product(parts[0], Integer.parseInt(parts[2]), Double.parseDouble(parts[3]), parts[1]);
+                    // Create a temporary product object to hold data
+                    // Constructor: Name, Price, Total, Small, Med, Large
+                    classy.Product item = new classy.Product(parts[0], 
+                            Double.parseDouble(parts[3]), 
+                            Integer.parseInt(parts[2]), 0, 0, 0);
+                    
+                    item.setSize(parts[1]); // Set selected size
 
-                    // ENCAPSULATION: Use Getters to fill the table
                     model.addRow(new Object[]{
                         id++, 
                         item.getName(), 
                         item.getSize(), 
                         item.getQuantity(), 
                         item.getPrice(), 
-                        (item.getPrice() * item.getQuantity()) // Total calculated from object
+                        Double.parseDouble(parts[4]) // Total from file
                     });
                 }
             }   
-            scanner.close();
-        } catch (Exception e) {}
+        } catch (Exception e) {
+            System.out.println("Cart Load Error: " + e.getMessage());
+        }
     }
 }

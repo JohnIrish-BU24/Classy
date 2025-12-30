@@ -1,17 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package classy;
 
 /**
- *
  * @author milal
  */
 public class Pants extends Product {
-    public Pants(String name, int quantity, double price, String size) {
-        
-        // calls the constructor already written in the Product.java
-        super(name, quantity, price, size);
+    
+    // Updated to match the 6-parameter Product constructor
+    public Pants(String name, double price, int total, int s, int m, int l) {
+        // Calls the constructor in Product.java with all stock levels
+        super(name, price, total, s, m, l);
     }
 }

@@ -324,67 +324,76 @@ public class OrdersJFrame extends javax.swing.JFrame {
 public static String processCheckout(java.awt.Component parent) {
     String date = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());
     String time = new java.text.SimpleDateFormat("HH:mm:ss").format(new java.util.Date());
+    // Create a unique tracker ID (e.g., CLS-4829A)
     String tracker = "CLS-" + (int)(Math.random()*9000 + 1000) + (char)((int)(Math.random()*26)+65);
     
-    StringBuilder terminalReceipt = new StringBuilder(); // For Terminal/UI display
     double grandTotal = 0;
+    StringBuilder terminalReceipt = new StringBuilder();
 
     try {
         java.io.File cartFile = new java.io.File("Cart.txt");
+        if (!cartFile.exists() || cartFile.length() == 0) {
+            JOptionPane.showMessageDialog(parent, "Cart is empty!");
+            return "Empty";
+        }
+
         java.util.Scanner scanner = new java.util.Scanner(cartFile);
-        
-        // File 1: OrderDetails.txt (The "Tracker File" for items)
         java.io.FileWriter fwDetails = new java.io.FileWriter("OrderDetails.txt", true);
 
         while (scanner.hasNextLine()) {
-            String[] parts = scanner.nextLine().split(",");
-            classy.Product item = new classy.Product(parts[0], Integer.parseInt(parts[2]), Double.parseDouble(parts[3]), parts[1]);
-            double itemTotal = item.getPrice() * item.getQuantity();
-            grandTotal += itemTotal;
-
-            // Write to Tracker File
-            fwDetails.write(tracker + "," + item.getName() + "," + item.getSize() + "," + 
-                            item.getQuantity() + "," + item.getPrice() + "," + itemTotal + "\n");
+            String line = scanner.nextLine();
+            if (line.trim().isEmpty()) continue;
             
-            terminalReceipt.append(String.format("%-15s x%-3d ₱%-10.2f\n", item.getName(), item.getQuantity(), itemTotal));
+            String[] parts = line.split(",");
+            // parts[0]=Name, parts[1]=Size, parts[2]=Qty, parts[3]=Price, parts[4]=Total
+            if (parts.length >= 5) {
+                String name = parts[0];
+                String size = parts[1];
+                int qty = Integer.parseInt(parts[2]);
+                double price = Double.parseDouble(parts[3]);
+                double itemTotal = Double.parseDouble(parts[4]);
+                grandTotal += itemTotal;
+
+                // 1. CALL PRODUCT CLASS TO SUBTRACT STOCK PERMANENTLY
+                classy.Product.updateInventoryStock(name, size, qty);
+
+                // 2. SAVE ITEM TO HISTORY (OrderDetails.txt)
+                fwDetails.write(tracker + "," + name + "," + size + "," + qty + "," + price + "," + itemTotal + "\n");
+                
+                // Add to the visual receipt string
+                terminalReceipt.append(String.format("%-15s x%-3d ₱%-10.2f\n", name, qty, itemTotal));
+            }
         }
         scanner.close();
         fwDetails.close();
 
-        // File 2: Receipt.txt (The "Header File" for the table)
+        // 3. SAVE ORDER SUMMARY (Receipt.txt)
         java.io.FileWriter fwReceipt = new java.io.FileWriter("Receipt.txt", true);
         fwReceipt.write(date + "," + time + "," + tracker + "," + grandTotal + "\n");
         fwReceipt.close();
 
-        // --- UPDATED LAYOUT LOGIC ---
+        // 4. DISPLAY THE FINAL RECEIPT POP-UP
         StringBuilder fullReceipt = new StringBuilder();
         fullReceipt.append("-------- CLASSy Receipt --------\n");
-        fullReceipt.append("Date: ").append(date).append(" Time: ").append(time).append("\n");
-        fullReceipt.append("Order: ").append(tracker).append("\n");
+        fullReceipt.append("Date: ").append(date).append(" ").append(time).append("\n");
+        fullReceipt.append("Order ID: ").append(tracker).append("\n");
         fullReceipt.append("--------------------------------\n");
         fullReceipt.append(String.format("%-15s %-5s %-10s\n", "Item", "Qty", "Total (₱)"));
-        
-        // Add the items we just processed
         fullReceipt.append(terminalReceipt.toString());
-        
         fullReceipt.append("--------------------------------\n");
         fullReceipt.append(String.format("Grand Total: ₱%.2f\n", grandTotal));
 
-        // Create the Centered Panel
         javax.swing.JTextArea area = new javax.swing.JTextArea(fullReceipt.toString());
         area.setEditable(false);
-        area.setFont(new java.awt.Font("Monospaced", java.awt.Font.PLAIN, 12)); // Forces alignment
+        area.setFont(new java.awt.Font("Monospaced", java.awt.Font.PLAIN, 12));
         
-        javax.swing.JScrollPane scrollPane = new javax.swing.JScrollPane(area);
+        JOptionPane.showMessageDialog(parent, new javax.swing.JScrollPane(area), "Transaction Complete", JOptionPane.INFORMATION_MESSAGE);
 
-        // Show the panel (Centered over the parent frame)
-        javax.swing.JOptionPane.showMessageDialog(parent, scrollPane, "Order Receipt", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-
-        System.out.println(fullReceipt.toString()); // Log to terminal
-        return fullReceipt.toString(); 
+        return tracker;
 
     } catch (Exception e) {
-        return "Error: " + e.getMessage();
+        JOptionPane.showMessageDialog(parent, "Checkout Error: " + e.getMessage());
+        return "Error";
     }
 }
     

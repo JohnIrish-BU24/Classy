@@ -31,35 +31,37 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
     }
     
     public void loadProductData() {
-        try {
-            File file = new File("Inventory.txt");
-            Scanner reader = new Scanner(file);
-            while (reader.hasNextLine()) {
-                String line = reader.nextLine().trim();
-                if (line.isEmpty()) continue;
+    try {
+        File file = new File("Inventory.txt");
+        Scanner reader = new Scanner(file);
+        while (reader.hasNextLine()) {
+            String line = reader.nextLine().trim();
+            if (line.isEmpty()) continue;
 
-                String[] parts = line.split(" ");
-                if (parts.length >= 3) {
-                    int stock = Integer.parseInt(parts[parts.length - 1]);
-                    double price = Double.parseDouble(parts[parts.length - 2]);
+            String[] parts = line.split(" ");
+            if (parts.length >= 6) {
+                int l = Integer.parseInt(parts[parts.length - 1]);
+                int m = Integer.parseInt(parts[parts.length - 2]);
+                int s = Integer.parseInt(parts[parts.length - 3]);
+                int total = Integer.parseInt(parts[parts.length - 4]);
+                double price = Double.parseDouble(parts[parts.length - 5]);
 
-                    StringBuilder nameBuilder = new StringBuilder();
-                    for (int i = 0; i < parts.length - 2; i++) {
-                        nameBuilder.append(parts[i]).append(i == parts.length - 3 ? "" : " ");
-                    }
-                    String name = nameBuilder.toString();
-
-                    // OOP: Create a Product object instead of a String array
-                    classy.Product prod = new classy.Product(name, stock, price, "Default"); 
-                    productMap.put(name, prod);
+                StringBuilder nameBuilder = new StringBuilder();
+                for (int i = 0; i < parts.length - 5; i++) {
+                    nameBuilder.append(parts[i]).append(i == parts.length - 6 ? "" : " ");
                 }
+                String name = nameBuilder.toString();
+
+                classy.Product prod = new classy.Product(name, price, total, s, m, l); 
+                productMap.put(name, prod);
             }
-            reader.close();
-            displayProductInfo(); 
-        } catch (Exception e) {
-            System.out.println("Error reading file: " + e.getMessage());
         }
+        reader.close();
+        displayProductInfo(); 
+    } catch (Exception e) {
+        System.out.println("Error: " + e.getMessage());
     }
+}
 
     private void displayProductInfo() {
     
@@ -82,6 +84,23 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
         stockLbl.setText(String.valueOf(prod.getQuantity()));
     }
 }
+    
+    private void handleShirtAddToCart(String name, javax.swing.JSpinner spinner) {
+        int qty = (Integer) spinner.getValue();
+        String size = jComboBox1.getSelectedItem().toString(); 
+
+        if(productMap.containsKey(name) && qty > 0) {
+            int availableStock = productMap.get(name).getStockBySize(size);
+            if (qty <= availableStock) {
+                classy.Product.addToCart(this, name, size, qty, "Shirts");
+                spinner.setValue(0);
+            } else {
+                JOptionPane.showMessageDialog(this, "Insufficient stock for " + size + ". Only " + availableStock + " left.");
+            }
+        } else {
+             JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -192,7 +211,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
         jButton4.setText("Log Out");
         jButton4.addActionListener(this::jButton4ActionPerformed);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pending_Orders/Logo2.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Orders/Logo2.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -278,7 +297,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         jLabel5.setText("Quantity:");
         jPanel6.add(jLabel5);
-        jLabel5.setBounds(15, 143, 49, 16);
+        jLabel5.setBounds(15, 143, 47, 16);
 
         jLabel15.setText("$$$");
         jPanel6.add(jLabel15);
@@ -339,7 +358,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         jLabel9.setText("Quantity:");
         jPanel7.add(jLabel9);
-        jLabel9.setBounds(15, 143, 49, 16);
+        jLabel9.setBounds(15, 143, 47, 16);
 
         jLabel16.setText("$$$");
         jPanel7.add(jLabel16);
@@ -386,7 +405,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         jLabel13.setText("Quantity:");
         jPanel8.add(jLabel13);
-        jLabel13.setBounds(15, 143, 49, 16);
+        jLabel13.setBounds(15, 143, 47, 16);
 
         jLabel17.setText("$$$");
         jPanel8.add(jLabel17);
@@ -433,7 +452,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         jLabel20.setText("Quantity:");
         jPanel9.add(jLabel20);
-        jLabel20.setBounds(15, 143, 49, 16);
+        jLabel20.setBounds(15, 143, 47, 16);
 
         jLabel21.setText("$$$");
         jPanel9.add(jLabel21);
@@ -480,7 +499,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         jLabel25.setText("Quantity:");
         jPanel10.add(jLabel25);
-        jLabel25.setBounds(15, 143, 49, 16);
+        jLabel25.setBounds(15, 143, 47, 16);
 
         jLabel26.setText("$$$");
         jPanel10.add(jLabel26);
@@ -527,7 +546,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         jLabel30.setText("Quantity:");
         jPanel11.add(jLabel30);
-        jLabel30.setBounds(15, 143, 49, 16);
+        jLabel30.setBounds(15, 143, 47, 16);
 
         jLabel31.setText("$$$");
         jPanel11.add(jLabel31);
@@ -640,9 +659,29 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
+        String selectedSize = jComboBox1.getSelectedItem().toString();
+        
+        updateStockDisplay(selectedSize);
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    private void updateStockDisplay(String size) {
+        // List of your product names
+        String[] products = {"Cat Shirt", "Varsity", "Mountain", "Stripes", "Cowgirl", "Khaki Cat"};
+        
+        // Corresponding stock labels in order
+        javax.swing.JLabel[] labels = {jLabel36, jLabel42, jLabel43, jLabel38, jLabel45, jLabel33};
+
+        for (int i = 0; i < products.length; i++) {
+            if (productMap.containsKey(products[i])) {
+                // Get the Product object and fetch the stock for that specific size
+                classy.Product prod = productMap.get(products[i]);
+                int stock = prod.getStockBySize(size); 
+                
+                // Update the UI label
+                labels[i].setText(String.valueOf(stock));
+            }
+        }
+    }
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // Go to Shirts Panel
         Product_ListJFrame_Shirts productPage = new Product_ListJFrame_Shirts();
@@ -654,17 +693,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-        String name = "Cowgirl"; 
-        int qty = (Integer) jSpinner1.getValue();
-        String size = jComboBox1.getSelectedItem().toString(); 
-
-        // Safety check using your productMap object
-        if(productMap.containsKey(name) && qty > 0) {
-            classy.Product.addToCart(this, name, size, qty, "Shirts");
-            jSpinner1.setValue(0);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
-        }
+        handleShirtAddToCart("Cowgirl", jSpinner1);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -686,73 +715,28 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        String name = "Cat Shirt"; 
-        int qty = (Integer) jSpinner2.getValue();
-        String size = jComboBox1.getSelectedItem().toString(); 
-
-        // Safety check using your productMap object
-        if(productMap.containsKey(name) && qty > 0) {
-            classy.Product.addToCart(this, name, size, qty, "Shirts");
-            jSpinner2.setValue(0);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
-        }
+        // Cat Shirt
+        handleShirtAddToCart("Cat Shirt", jSpinner2);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        String name = "Stripes"; 
-        int qty = (Integer) jSpinner3.getValue();
-        String size = jComboBox1.getSelectedItem().toString(); 
-
-        // Safety check using your productMap object
-        if(productMap.containsKey(name) && qty > 0) {
-            classy.Product.addToCart(this, name, size, qty, "Shirts");
-            jSpinner3.setValue(0);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
-        }
+        // Stripes
+        handleShirtAddToCart("Stripes", jSpinner3);
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        String name = "Khaki Cat"; 
-        int qty = (Integer) jSpinner4.getValue();
-        String size = jComboBox1.getSelectedItem().toString(); 
-
-        // Safety check using your productMap object
-        if(productMap.containsKey(name) && qty > 0) {
-            classy.Product.addToCart(this, name, size, qty, "Shirts");
-            jSpinner4.setValue(0);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
-        }
+        // Khaki Cat
+        handleShirtAddToCart("Khaki Cat", jSpinner4);
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        String name = "Mountain"; 
-        int qty = (Integer) jSpinner5.getValue();
-        String size = jComboBox1.getSelectedItem().toString(); 
-
-        // Safety check using your productMap object
-        if(productMap.containsKey(name) && qty > 0) {
-            classy.Product.addToCart(this, name, size, qty, "Shirts");
-            jSpinner5.setValue(0);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
-        }
+        // Mountain
+        handleShirtAddToCart("Mountain", jSpinner5);
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        String name = "Varsity"; 
-        int qty = (Integer) jSpinner6.getValue();
-        String size = jComboBox1.getSelectedItem().toString(); 
-
-        // Safety check using your productMap object
-        if(productMap.containsKey(name) && qty > 0) {
-            classy.Product.addToCart(this, name, size, qty, "Shirts");
-            jSpinner6.setValue(0);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
-        }
+        // Varsity
+        handleShirtAddToCart("Varsity", jSpinner6);
     }//GEN-LAST:event_jButton13ActionPerformed
 
     /**
