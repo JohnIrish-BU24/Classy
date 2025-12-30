@@ -338,7 +338,7 @@ public static String processCheckout(java.awt.Component parent) {
 
         while (scanner.hasNextLine()) {
             String[] parts = scanner.nextLine().split(",");
-            classy.Product item = new classy.Product(parts[0], Integer.parseInt(parts[2]), Double.parseDouble(parts[3]), parts[1]);
+            classy.models.Product item = new classy.models.Product(parts[0], Integer.parseInt(parts[2]), Double.parseDouble(parts[3]), parts[1]);
             double itemTotal = item.getPrice() * item.getQuantity();
             grandTotal += itemTotal;
 

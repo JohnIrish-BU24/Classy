@@ -16,7 +16,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Product_ListJFrame_Shirts.class.getName());
 
     // Encapsulation
-    private java.util.HashMap<String, classy.Product> productMap = new java.util.HashMap<>();
+    private java.util.HashMap<String, classy.models.Product> productMap = new java.util.HashMap<>();
     
     public Product_ListJFrame_Shirts() {
         initComponents();
@@ -50,7 +50,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
                     String name = nameBuilder.toString();
 
                     // OOP: Create a Product object instead of a String array
-                    classy.Product prod = new classy.Product(name, stock, price, "Default"); 
+                    classy.models.Product prod = new classy.models.Product(name, stock, price, "Default"); 
                     productMap.put(name, prod);
                 }
             }
@@ -74,7 +74,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
     private void updateLabel(String id, javax.swing.JLabel idLbl, javax.swing.JLabel priceLbl, javax.swing.JLabel stockLbl) {
     if (productMap.containsKey(id)) {
         // OOP: Retrieve the object
-        classy.Product prod = productMap.get(id);
+        classy.models.Product prod = productMap.get(id);
         
         // Use getters from your Product class
         idLbl.setText(prod.getName());
@@ -660,7 +660,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         // Safety check using your productMap object
         if(productMap.containsKey(name) && qty > 0) {
-            classy.Product.addToCart(this, name, size, qty, "Shirts");
+            classy.models.Product.addToCart(this, name, size, qty, "Shirts");
             jSpinner1.setValue(0);
         } else {
             JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
@@ -692,7 +692,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         // Safety check using your productMap object
         if(productMap.containsKey(name) && qty > 0) {
-            classy.Product.addToCart(this, name, size, qty, "Shirts");
+            classy.models.Product.addToCart(this, name, size, qty, "Shirts");
             jSpinner2.setValue(0);
         } else {
             JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
@@ -706,7 +706,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         // Safety check using your productMap object
         if(productMap.containsKey(name) && qty > 0) {
-            classy.Product.addToCart(this, name, size, qty, "Shirts");
+            classy.models.Product.addToCart(this, name, size, qty, "Shirts");
             jSpinner3.setValue(0);
         } else {
             JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
@@ -720,7 +720,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         // Safety check using your productMap object
         if(productMap.containsKey(name) && qty > 0) {
-            classy.Product.addToCart(this, name, size, qty, "Shirts");
+            classy.models.Product.addToCart(this, name, size, qty, "Shirts");
             jSpinner4.setValue(0);
         } else {
             JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
@@ -734,7 +734,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         // Safety check using your productMap object
         if(productMap.containsKey(name) && qty > 0) {
-            classy.Product.addToCart(this, name, size, qty, "Shirts");
+            classy.models.Product.addToCart(this, name, size, qty, "Shirts");
             jSpinner5.setValue(0);
         } else {
             JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
@@ -748,7 +748,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         // Safety check using your productMap object
         if(productMap.containsKey(name) && qty > 0) {
-            classy.Product.addToCart(this, name, size, qty, "Shirts");
+            classy.models.Product.addToCart(this, name, size, qty, "Shirts");
             jSpinner6.setValue(0);
         } else {
             JOptionPane.showMessageDialog(this, "Please select a valid quantity.");

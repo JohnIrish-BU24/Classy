@@ -389,7 +389,7 @@ public class CartJFrame extends javax.swing.JFrame {
                 if (parts.length >= 5) {
                     // OOP CHANGE: Create a Product object from the text data
                     // Parameters: name, quantity, price, size
-                    classy.Product item = new classy.Product(parts[0], Integer.parseInt(parts[2]), Double.parseDouble(parts[3]), parts[1]);
+                    classy.models.Product item = new classy.models.Product(parts[0], Integer.parseInt(parts[2]), Double.parseDouble(parts[3]), parts[1]);
 
                     // ENCAPSULATION: Use Getters to fill the table
                     model.addRow(new Object[]{
