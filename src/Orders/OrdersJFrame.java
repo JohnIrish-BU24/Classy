@@ -46,6 +46,12 @@ public class OrdersJFrame extends javax.swing.JFrame {
         jTable1.getColumnModel().getColumn(3).setCellRenderer(new ButtonRenderer());
         jTable1.getColumnModel().getColumn(3).setCellEditor(new ButtonEditor(new javax.swing.JCheckBox(), jTable1));
         
+        jScrollPane1.setViewportView(jTable1); // Links the table to the scrollbar
+        jTable1.setFillsViewportHeight(true);  // Keeps the background consistent
+
+        // This allows the table to scroll vertically when orders exceed the height
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        
         loadOrdersTable();
     }
 
@@ -354,8 +360,6 @@ public static String processCheckout(java.awt.Component parent) {
                 double itemTotal = Double.parseDouble(parts[4]);
                 grandTotal += itemTotal;
 
-                // 1. CALL PRODUCT CLASS TO SUBTRACT STOCK PERMANENTLY
-                classy.Product.updateInventoryStock(name, size, qty);
 
                 // 2. SAVE ITEM TO HISTORY (OrderDetails.txt)
                 fwDetails.write(tracker + "," + name + "," + size + "," + qty + "," + price + "," + itemTotal + "\n");

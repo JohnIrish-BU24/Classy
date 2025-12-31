@@ -115,6 +115,10 @@ public void loadProductData() {
                 // IMPORTANT: Changed category to "Dresses"
                 classy.Product.addToCart(this, name, size, qty, "Dresses");
                 spinner.setValue(0);
+                
+                loadProductData(); 
+                updateAllStockLabels(jComboBox1.getSelectedItem().toString());
+                
             } else {
                 JOptionPane.showMessageDialog(this, "Insufficient stock! Only " + availableStock + " left in " + size);
             }

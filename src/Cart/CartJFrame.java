@@ -33,6 +33,12 @@ public class CartJFrame extends javax.swing.JFrame {
         
         this.setLocationRelativeTo(null);
         
+        jScrollPane1.setViewportView(jTable1); 
+        jTable1.setFillsViewportHeight(true);
+
+        // Increases scroll speed for a smoother "Classy" feel
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
+        
         loadCartTable(jTable1);
     }
         
@@ -304,17 +310,38 @@ public class CartJFrame extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         try {
-            // Overwrite Cart.txt with nothing
+            // --- UPDATED LOGIC START ---
+            File cartFile = new File("Cart.txt");
+            if (cartFile.exists()) {
+                Scanner reader = new Scanner(cartFile);
+                while (reader.hasNextLine()) {
+                    String line = reader.nextLine();
+                    if (line.trim().isEmpty()) continue;
+                    String[] parts = line.split(",");
+
+                    // parts[0]=Name, parts[1]=Size, parts[2]=Qty
+                    String name = parts[0];
+                    String size = parts[1];
+                    int qtyToReturn = Integer.parseInt(parts[2]);
+
+                    // Return stock to inventory (negative qty adds it back)
+                    classy.Product.updateInventoryStock(name, size, -qtyToReturn); 
+                }
+                reader.close();
+            }
+
+            // 2. Now overwrite Cart.txt to clear it
             FileWriter fw = new FileWriter("Cart.txt", false);
             fw.close();
 
-            // Clear JTable
+            // 3. Clear JTable
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0);
 
             if (evt != null) {
-                JOptionPane.showMessageDialog(this, "Cart has been cleared.");
+                JOptionPane.showMessageDialog(this, "Cart cleared and stock returned to inventory.");
             }
+            // --- UPDATED LOGIC END ---
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error clearing cart: " + e.getMessage());
         }

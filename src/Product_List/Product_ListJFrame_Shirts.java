@@ -94,6 +94,10 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
             if (qty <= availableStock) {
                 classy.Product.addToCart(this, name, size, qty, "Shirts");
                 spinner.setValue(0);
+                
+                loadProductData(); // Re-read text file into HashMap
+                updateStockDisplay(jComboBox1.getSelectedItem().toString()); // Refresh labels
+                
             } else {
                 JOptionPane.showMessageDialog(this, "Insufficient stock for " + size + ". Only " + availableStock + " left.");
             }
