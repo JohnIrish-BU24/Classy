@@ -2,19 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Orders;
-import Product_List.Product_ListJFrame_Shirts;
-import Cart.CartJFrame;
-import LogIn.LogInJFrame;
+package classy.views.Orders;
+import classy.views.Cart.CartJFrame; // Import other views if needed
+import classy.views.Product_List.Product_ListJFrame_Shirts;
+import classy.views.LogIn.LogInJFrame;
+import classy.models.Order;          // OOP Model
+import classy.models.OrderItem;      // OOP Model
+import classy.services.FileHandler;  // OOP Service
 
 import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JTable;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
 /**
@@ -308,86 +310,14 @@ public class OrdersJFrame extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         int confirm = JOptionPane.showConfirmDialog(this, "Delete all transaction history?", "Confirm", JOptionPane.YES_NO_OPTION);
         if (confirm == JOptionPane.YES_OPTION) {
-            try {
-                // Clear both files
-                new java.io.FileWriter("Receipt.txt", false).close(); 
-                new java.io.FileWriter("OrderDetails.txt", false).close(); 
+            // OOP CALL
+            classy.services.FileHandler.clearHistory();
 
-                loadOrdersTable(); // Refresh the visual table
-                JOptionPane.showMessageDialog(this, "All history and details cleared.");
-            } catch (java.io.IOException e) { 
-                JOptionPane.showMessageDialog(this, "Error clearing history: " + e.getMessage());
-            }
+            loadOrdersTable(); 
+            JOptionPane.showMessageDialog(this, "History cleared.");
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
-public static String processCheckout(java.awt.Component parent) {
-    String date = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());
-    String time = new java.text.SimpleDateFormat("HH:mm:ss").format(new java.util.Date());
-    String tracker = "CLS-" + (int)(Math.random()*9000 + 1000) + (char)((int)(Math.random()*26)+65);
-    
-    StringBuilder terminalReceipt = new StringBuilder(); // For Terminal/UI display
-    double grandTotal = 0;
-
-    try {
-        java.io.File cartFile = new java.io.File("Cart.txt");
-        java.util.Scanner scanner = new java.util.Scanner(cartFile);
-        
-        // File 1: OrderDetails.txt (The "Tracker File" for items)
-        java.io.FileWriter fwDetails = new java.io.FileWriter("OrderDetails.txt", true);
-
-        while (scanner.hasNextLine()) {
-            String[] parts = scanner.nextLine().split(",");
-            classy.models.Product item = new classy.models.Product(parts[0], Integer.parseInt(parts[2]), Double.parseDouble(parts[3]), parts[1]);
-            double itemTotal = item.getPrice() * item.getQuantity();
-            grandTotal += itemTotal;
-
-            // Write to Tracker File
-            fwDetails.write(tracker + "," + item.getName() + "," + item.getSize() + "," + 
-                            item.getQuantity() + "," + item.getPrice() + "," + itemTotal + "\n");
-            
-            terminalReceipt.append(String.format("%-15s x%-3d ₱%-10.2f\n", item.getName(), item.getQuantity(), itemTotal));
-        }
-        scanner.close();
-        fwDetails.close();
-
-        // File 2: Receipt.txt (The "Header File" for the table)
-        java.io.FileWriter fwReceipt = new java.io.FileWriter("Receipt.txt", true);
-        fwReceipt.write(date + "," + time + "," + tracker + "," + grandTotal + "\n");
-        fwReceipt.close();
-
-        // --- UPDATED LAYOUT LOGIC ---
-        StringBuilder fullReceipt = new StringBuilder();
-        fullReceipt.append("-------- CLASSy Receipt --------\n");
-        fullReceipt.append("Date: ").append(date).append(" Time: ").append(time).append("\n");
-        fullReceipt.append("Order: ").append(tracker).append("\n");
-        fullReceipt.append("--------------------------------\n");
-        fullReceipt.append(String.format("%-15s %-5s %-10s\n", "Item", "Qty", "Total (₱)"));
-        
-        // Add the items we just processed
-        fullReceipt.append(terminalReceipt.toString());
-        
-        fullReceipt.append("--------------------------------\n");
-        fullReceipt.append(String.format("Grand Total: ₱%.2f\n", grandTotal));
-
-        // Create the Centered Panel
-        javax.swing.JTextArea area = new javax.swing.JTextArea(fullReceipt.toString());
-        area.setEditable(false);
-        area.setFont(new java.awt.Font("Monospaced", java.awt.Font.PLAIN, 12)); // Forces alignment
-        
-        javax.swing.JScrollPane scrollPane = new javax.swing.JScrollPane(area);
-
-        // Show the panel (Centered over the parent frame)
-        javax.swing.JOptionPane.showMessageDialog(parent, scrollPane, "Order Receipt", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-
-        System.out.println(fullReceipt.toString()); // Log to terminal
-        return fullReceipt.toString(); 
-
-    } catch (Exception e) {
-        return "Error: " + e.getMessage();
-    }
-}
-    
     /**
      * @param args the command line arguments
      */
@@ -431,22 +361,21 @@ public static String processCheckout(java.awt.Component parent) {
     // End of variables declaration//GEN-END:variables
 
     public void loadOrdersTable() {
-        javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) jTable1.getModel();
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
-        java.io.File file = new java.io.File("Receipt.txt");
-        if (!file.exists()) return;
 
-        try (java.util.Scanner scanner = new java.util.Scanner(file)) {
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                if (line.trim().isEmpty()) continue;
-                String[] parts = line.split(",");
-                if (parts.length >= 4) {
-                    // Column 0: Date, Column 1: Tracker, Column 2: Grand Total, Column 3: Button Label
-                    model.addRow(new Object[]{parts[0], parts[2], parts[3], "Receipt"});
-                }
-            }
-        } catch (Exception e) { e.printStackTrace(); }
+        // 1. Get List of Objects from Service
+        java.util.List<Order> orders = FileHandler.loadAllOrders();
+
+        // 2. Loop through Objects
+        for (Order order : orders) {
+            model.addRow(new Object[]{
+                order.getDate() + " " + order.getTime(), 
+                order.getTracker(), 
+                "₱" + order.getGrandTotal(), 
+                "Receipt"
+            });
+        }
     }
 }
 
@@ -470,68 +399,54 @@ class ButtonEditor extends DefaultCellEditor {
     protected JButton button;
     private String label;
     private boolean isPushed;
-    private JTable table; // Add this variable
+    private JTable table;
 
-    public ButtonEditor(JCheckBox checkBox, JTable table) { // Update constructor
+    public ButtonEditor(JCheckBox checkBox, JTable table) {
         super(checkBox);
-        this.table = table; // Store the table reference
+        this.table = table;
         button = new JButton();
         button.setOpaque(true);
         button.addActionListener(e -> fireEditingStopped());
     }
 
-    @Override
-    public Component getTableCellEditorComponent(JTable table, Object value,
-            boolean isSelected, int row, int column) {
+    public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
         label = (value == null) ? "Receipt" : value.toString();
         button.setText(label);
         isPushed = true;
         return button;
     }
 
-    @Override
     public Object getCellEditorValue() {
         if (isPushed) {
-            String trackerToFind = table.getValueAt(table.getSelectedRow(), 1).toString();
+            String tracker = table.getValueAt(table.getSelectedRow(), 1).toString();
             String date = table.getValueAt(table.getSelectedRow(), 0).toString();
             String total = table.getValueAt(table.getSelectedRow(), 2).toString();
 
+            // 1. Build Receipt Header
             StringBuilder layout = new StringBuilder();
             layout.append("-------- CLASSy Receipt --------\n");
             layout.append("Date: ").append(date).append("\n");
-            layout.append("Order: ").append(trackerToFind).append("\n");
+            layout.append("Order: ").append(tracker).append("\n");
             layout.append("--------------------------------\n");
-            // Update header to use ₱
             layout.append(String.format("%-15s %-5s %-10s\n", "Item", "Qty", "Total (₱)"));
 
-            try {
-                java.util.Scanner detailsScanner = new java.util.Scanner(new java.io.File("OrderDetails.txt"));
-                while (detailsScanner.hasNextLine()) {
-                    String[] d = detailsScanner.nextLine().split(",");
-                    if (d[0].equals(trackerToFind)) {
-                        // Update item total to use ₱
-                        layout.append(String.format("%-15s %-5s ₱%-10s\n", d[1], d[3], d[5]));
-                    }
-                }
-                detailsScanner.close();
-
-                layout.append("--------------------------------\n");
-                // Update summary total to use ₱
-                layout.append("Total Amount: ₱").append(total).append("\n");
-
-                // 3. Display in a formatted TextArea
-                javax.swing.JTextArea area = new javax.swing.JTextArea(layout.toString());
-                area.setFont(new java.awt.Font("Monospaced", 0, 12));
-                area.setEditable(false);
-
-                System.out.println(layout.toString()); // Terminal
-                javax.swing.JOptionPane.showMessageDialog(null, new javax.swing.JScrollPane(area), "View Receipt", 1);
-
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Error loading details: " + ex.getMessage());
+            // 2. Get Items from Service (OOP)
+            java.util.List<OrderItem> items = FileHandler.loadItemsByTracker(tracker);
+            
+            for (OrderItem item : items) {
+                layout.append(String.format("%-15s %-5s ₱%-10.2f\n", 
+                    item.getName(), item.getQuantity(), item.getTotal()));
             }
+
+            layout.append("--------------------------------\n");
+            layout.append("Total Amount: ").append(total).append("\n");
+
+            // 3. Show Popup
+            javax.swing.JTextArea area = new javax.swing.JTextArea(layout.toString());
+            area.setFont(new java.awt.Font("Monospaced", 0, 12));
+            javax.swing.JOptionPane.showMessageDialog(null, new javax.swing.JScrollPane(area), "View Receipt", 1);
         }
         isPushed = false;
-        return "Receipt";
-    } 
+        return label;
+    }
 }

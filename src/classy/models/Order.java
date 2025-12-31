@@ -21,12 +21,11 @@ public class Order {
         this.items = new ArrayList<>();
     }
 
-    // Getters
     public String getDate() { return date; }
     public String getTime() { return time; }
     public String getTracker() { return tracker; }
     public double getGrandTotal() { return grandTotal; }
-    
     public List<OrderItem> getItems() { return items; }
+    
     public void addItem(OrderItem item) { this.items.add(item); }
 }

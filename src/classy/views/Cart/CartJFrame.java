@@ -2,16 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Cart;
-import Product_List.Product_ListJFrame_Shirts;
-import Orders.OrdersJFrame;
-import LogIn.LogInJFrame;
-import java.io.File;
-import java.io.FileWriter;
-import java.util.ArrayList;
-import java.util.Scanner;
+package classy.views.Cart;
+import classy.views.Orders.OrdersJFrame;
+import classy.views.Product_List.Product_ListJFrame_Shirts; // Example
+import classy.views.LogIn.LogInJFrame;
+import classy.services.CheckoutService; // OOP Service
+import classy.models.Product;           // OOP Model
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.io.File;
+import java.util.Scanner;
 
 /**
  *
@@ -305,25 +306,40 @@ public class CartJFrame extends javax.swing.JFrame {
 
     // --- CHECK OUT (Updates Inventory Here!) ---
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        Orders.OrdersJFrame.processCheckout(this);
+        // 1. Call the Service to get the receipt text
+        String receipt = classy.services.CheckoutService.processCheckout();
 
-        jButton6ActionPerformed(null);
+        // 2. Check for errors or empty cart
+        if (receipt.equals("Cart is empty!") || receipt.startsWith("Error")) {
+            javax.swing.JOptionPane.showMessageDialog(this, receipt);
+        } else {
+            // 3. Show Receipt in a scrollable popup
+            javax.swing.JTextArea area = new javax.swing.JTextArea(receipt);
+            area.setFont(new java.awt.Font("Monospaced", 0, 12));
+            area.setEditable(false);
+
+            javax.swing.JOptionPane.showMessageDialog(this, new javax.swing.JScrollPane(area), 
+                    "Checkout Complete", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+
+            // 4. Clear the UI and File automatically
+            jButton6ActionPerformed(null);
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-            try {
-            // Clear the physical file
+        try {
+            // 1. Clear the physical file
             new java.io.FileWriter("Cart.txt", false).close();
-
-            // Clear the visual table
-            ((javax.swing.table.DefaultTableModel) jTable1.getModel()).setRowCount(0);
-
-            // Only show the message if the user clicked the button manually
+            
+            // 2. Clear the visual table
+            loadCartTable(jTable1); 
+            
+            // 3. Optional User Feedback
             if (evt != null) {
                 JOptionPane.showMessageDialog(this, "Cart Emptied.");
             }
         } catch (java.io.IOException e) {
-            // Handle error
+            e.printStackTrace();
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -372,14 +388,13 @@ public class CartJFrame extends javax.swing.JFrame {
 
     // --- LOAD CART TABLE ---
     public static void loadCartTable(javax.swing.JTable table) {
-        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) table.getModel();
         model.setRowCount(0);
-        
-        File file = new File("Cart.txt");
+
+        java.io.File file = new java.io.File("Cart.txt");
         if (!file.exists()) return;
 
-        try {
-            Scanner scanner = new Scanner(file);
+        try (java.util.Scanner scanner = new java.util.Scanner(file)) {
             int id = 1;
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
@@ -387,22 +402,23 @@ public class CartJFrame extends javax.swing.JFrame {
 
                 String[] parts = line.split(",");
                 if (parts.length >= 5) {
-                    // OOP CHANGE: Create a Product object from the text data
-                    // Parameters: name, quantity, price, size
-                    classy.models.Product item = new classy.models.Product(parts[0], Integer.parseInt(parts[2]), Double.parseDouble(parts[3]), parts[1]);
+                    // OOP: Create the Product Object
+                    classy.models.Product item = new classy.models.Product(parts[0], 
+                            Integer.parseInt(parts[2]), 
+                            Double.parseDouble(parts[3]), 
+                            parts[1]);
 
-                    // ENCAPSULATION: Use Getters to fill the table
+                    // Add to table
                     model.addRow(new Object[]{
                         id++, 
                         item.getName(), 
                         item.getSize(), 
                         item.getQuantity(), 
                         item.getPrice(), 
-                        (item.getPrice() * item.getQuantity()) // Total calculated from object
+                        item.calculateSubtotal() // Use the object's math
                     });
                 }
-            }   
-            scanner.close();
+            }
         } catch (Exception e) {}
     }
 }

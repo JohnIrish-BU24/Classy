@@ -4,9 +4,6 @@
  */
 package classy.models;
 
-/**
- * Reusing your existing Product structure but focused purely on Data (OOP Model).
- */
 public class Product {
     protected String productName;
     protected int quantity;
@@ -20,13 +17,12 @@ public class Product {
         this.size = size;
     }
 
-    // Encapsulation: Accessing data through Getters
     public String getName() { return productName; }
     public int getQuantity() { return quantity; }
     public double getPrice() { return price; }
     public String getSize() { return size; }
     
-    // OOP Logic: The object calculates its own subtotal
+    // Calculates its own total
     public double calculateSubtotal() {
         return this.price * this.quantity;
     }

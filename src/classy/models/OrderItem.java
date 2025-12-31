@@ -5,7 +5,7 @@
 package classy.models;
 
 public class OrderItem {
-    private String productName; 
+    private String productName;
     private String size;
     private int quantity;
     private double price;

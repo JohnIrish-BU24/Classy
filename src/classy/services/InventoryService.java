@@ -4,22 +4,17 @@
  */
 package classy.services;
 
-import classy.models.Product;
-import classy.models.Shirts;
-import classy.models.Pants;
-import classy.models.Dresses; // Ensure you have this model
+import classy.models.*; 
 import java.io.File;
 import java.io.FileWriter;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 public class InventoryService {
-
     private static final String INVENTORY_FILE = "Inventory.txt";
     private static final String CART_FILE = "Cart.txt";
 
-    public static void addToCart(java.awt.Component parent, String productName, String size, int qty, String category) {
-        // 1. Validation Logic
+    public static void addToCart(java.awt.Component parent, String name, String size, int qty, String category) {
         if (qty <= 0) {
             JOptionPane.showMessageDialog(parent, "Invalid quantity.");
             return;
@@ -30,67 +25,53 @@ public class InventoryService {
         }
 
         try {
-            // 2. Inventory Search Logic
-            File inventoryFile = new File(INVENTORY_FILE); 
-            if (!inventoryFile.exists()) {
-                JOptionPane.showMessageDialog(parent, "Inventory file not found!");
+            File invFile = new File(INVENTORY_FILE);
+            if (!invFile.exists()) {
+                JOptionPane.showMessageDialog(parent, "Inventory file missing!");
                 return;
             }
 
-            Scanner scanner = new Scanner(inventoryFile);
-            boolean productFound = false;
-            double foundPrice = 0.0; 
+            Scanner scanner = new Scanner(invFile);
+            boolean found = false;
+            double price = 0.0;
             
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 if (line.trim().isEmpty()) continue;
-                String[] parts = line.split("\\s+"); // Split by whitespace
-                int len = parts.length;
-                if (len < 3) continue; 
+                String[] parts = line.split("\\s+");
+                if (parts.length < 3) continue;
 
-                // Reconstruct name logic (in case name has spaces)
                 String currentName = "";
-                for(int i=0; i < len-2; i++) currentName += parts[i] + " ";
-                currentName = currentName.trim();
-
-                if (currentName.equalsIgnoreCase(productName)) {
-                    productFound = true;
-                    foundPrice = Double.parseDouble(parts[len-2]);
-                    break; 
+                for(int i=0; i < parts.length - 2; i++) currentName += parts[i] + " ";
+                
+                if (currentName.trim().equalsIgnoreCase(name)) {
+                    found = true;
+                    price = Double.parseDouble(parts[parts.length - 2]);
+                    break;
                 }
             }
             scanner.close();
 
-            if (!productFound) {
-                JOptionPane.showMessageDialog(parent, "Product not found in Inventory!");
+            if (!found) {
+                JOptionPane.showMessageDialog(parent, "Product not found!");
                 return;
             }
 
-            // 3. Create the Model Object (Polymorphism)
+            // Polymorphism
             Product item;
-            if (category.equalsIgnoreCase("Shirts")) {
-                item = new Shirts(productName, qty, foundPrice, size);
-            } else if (category.equalsIgnoreCase("Pants")) {
-                item = new Pants(productName, qty, foundPrice, size);
-            } else if (category.equalsIgnoreCase("Dresses")) {
-                item = new Dresses(productName, qty, foundPrice, size);
-            } else {
-                item = new Product(productName, qty, foundPrice, size);
-            }
+            if (category.equalsIgnoreCase("Shirts")) item = new Shirts(name, qty, price, size);
+            else if (category.equalsIgnoreCase("Pants")) item = new Pants(name, qty, price, size);
+            else if (category.equalsIgnoreCase("Dresses")) item = new Dresses(name, qty, price, size);
+            else item = new Product(name, qty, price, size);
 
-            // 4. Write to Cart File
-            FileWriter fwCart = new FileWriter(CART_FILE, true);
-            double total = item.calculateSubtotal(); // Using the Model's method
-            
-            // Format: Name,Size,Qty,Price,Total
-            fwCart.write(item.getName() + "," + item.getSize() + "," + 
-                         item.getQuantity() + "," + item.getPrice() + "," + total + "\n");
-            fwCart.close();
+            FileWriter fw = new FileWriter(CART_FILE, true);
+            fw.write(item.getName() + "," + item.getSize() + "," + item.getQuantity() + "," + 
+                     item.getPrice() + "," + item.calculateSubtotal() + "\n");
+            fw.close();
 
-            JOptionPane.showMessageDialog(parent, "Added to Cart successfully!");
+            JOptionPane.showMessageDialog(parent, "Added to Cart!");
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(parent, "Error processing cart: " + e.getMessage());
             e.printStackTrace();
         }
     }

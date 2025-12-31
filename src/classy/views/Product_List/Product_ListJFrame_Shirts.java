@@ -2,11 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Product_List;
+package classy.views.Product_List;
 
-import Cart.CartJFrame;
-import Orders.OrdersJFrame;
-import LogIn.LogInJFrame;
+import classy.services.InventoryService;
+
+import classy.views.Cart.CartJFrame;
+import classy.views.Orders.OrdersJFrame;
+import classy.views.LogIn.LogInJFrame;
 import java.io.File;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
@@ -660,7 +662,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         // Safety check using your productMap object
         if(productMap.containsKey(name) && qty > 0) {
-            classy.services.InventoryService.addToCart(this, productName, size, quantity, "Shirts");
+            classy.services.InventoryService.addToCart(this, name, size, qty, "Shirts");
             jSpinner1.setValue(0);
         } else {
             JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
@@ -692,7 +694,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         // Safety check using your productMap object
         if(productMap.containsKey(name) && qty > 0) {
-            classy.services.InventoryService.addToCart(this, productName, size, quantity, "Shirts");
+            classy.services.InventoryService.addToCart(this, name, size, qty, "Shirts");
             jSpinner2.setValue(0);
         } else {
             JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
@@ -706,7 +708,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         // Safety check using your productMap object
         if(productMap.containsKey(name) && qty > 0) {
-            classy.services.InventoryService.addToCart(this, productName, size, quantity, "Shirts");
+            classy.services.InventoryService.addToCart(this, name, size, qty, "Shirts");
             jSpinner3.setValue(0);
         } else {
             JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
@@ -720,7 +722,8 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         // Safety check using your productMap object
         if(productMap.containsKey(name) && qty > 0) {
-            classy.services.InventoryService.addToCart(this, productName, size, quantity, "Shirts");            jSpinner4.setValue(0);
+            classy.services.InventoryService.addToCart(this, name, size, qty, "Shirts");            
+            jSpinner4.setValue(0);
         } else {
             JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
         }
@@ -733,7 +736,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         // Safety check using your productMap object
         if(productMap.containsKey(name) && qty > 0) {
-            classy.services.InventoryService.addToCart(this, productName, size, quantity, "Shirts");
+            classy.services.InventoryService.addToCart(this, name, size, qty, "Shirts");
             jSpinner5.setValue(0);
         } else {
             JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
@@ -747,7 +750,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
 
         // Safety check using your productMap object
         if(productMap.containsKey(name) && qty > 0) {
-            classy.services.InventoryService.addToCart(this, productName, size, quantity, "Shirts");
+            classy.services.InventoryService.addToCart(this, name, size, qty, "Shirts");
             jSpinner6.setValue(0);
         } else {
             JOptionPane.showMessageDialog(this, "Please select a valid quantity.");

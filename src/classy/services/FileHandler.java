@@ -12,55 +12,40 @@ import java.util.List;
 import java.util.Scanner;
 
 public class FileHandler {
-    
     private static final String RECEIPT_FILE = "Receipt.txt";
     private static final String DETAILS_FILE = "OrderDetails.txt";
 
-    // LOAD ALL ORDERS (For the Orders Table)
     public static List<Order> loadAllOrders() {
         List<Order> orders = new ArrayList<>();
-        File file = new File(RECEIPT_FILE);
-        if (!file.exists()) return orders;
-
-        try (Scanner scanner = new Scanner(file)) {
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                if (line.trim().isEmpty()) continue;
-                
-                String[] parts = line.split(",");
-                if (parts.length >= 4) {
-                    // Create Order object: Date, Time, Tracker, Total
-                    orders.add(new Order(parts[0], parts[1], parts[2], Double.parseDouble(parts[3])));
+        try (Scanner sc = new Scanner(new File(RECEIPT_FILE))) {
+            while (sc.hasNextLine()) {
+                String[] p = sc.nextLine().split(",");
+                if (p.length >= 4) {
+                    orders.add(new Order(p[0], p[1], p[2], Double.parseDouble(p[3])));
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        } catch (Exception e) { }
         return orders;
     }
 
-    // LOAD ITEMS FOR A SPECIFIC ORDER (For the Receipt Popup)
-    public static List<OrderItem> loadItemsByTracker(String trackerToFind) {
+    public static List<OrderItem> loadItemsByTracker(String tracker) {
         List<OrderItem> items = new ArrayList<>();
-        File file = new File(DETAILS_FILE);
-        if (!file.exists()) return items;
-
-        try (Scanner scanner = new Scanner(file)) {
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                if (line.trim().isEmpty()) continue;
-
-                String[] d = line.split(",");
-                // Check if this line belongs to the tracker we are looking for
-                if (d[0].equals(trackerToFind)) {
-                    // d[1]=Name, d[2]=Size, d[3]=Qty, d[4]=Price, d[5]=Total
-                    items.add(new OrderItem(d[1], d[2], Integer.parseInt(d[3]), 
-                             Double.parseDouble(d[4]), Double.parseDouble(d[5])));
+        try (Scanner sc = new Scanner(new File(DETAILS_FILE))) {
+            while (sc.hasNextLine()) {
+                String[] p = sc.nextLine().split(",");
+                if (p[0].equals(tracker)) {
+                    items.add(new OrderItem(p[1], p[2], Integer.parseInt(p[3]), 
+                              Double.parseDouble(p[4]), Double.parseDouble(p[5])));
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        } catch (Exception e) { }
         return items;
     }
+    
+    public static void clearHistory() {
+    try {
+        new java.io.FileWriter("Receipt.txt", false).close();
+        new java.io.FileWriter("OrderDetails.txt", false).close();
+    } catch (Exception e) { e.printStackTrace(); }
+}
 }

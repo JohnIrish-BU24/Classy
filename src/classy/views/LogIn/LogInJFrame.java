@@ -2,8 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package LogIn;
-import Product_List.Product_ListJFrame_Shirts;
+package classy.views.LogIn;
+import classy.views.Product_List.Product_ListJFrame_Shirts;
 
 /**
  *
@@ -182,9 +182,8 @@ public class LogInJFrame extends javax.swing.JFrame {
         // 2. CHECK CREDENTIALS
         if (username.equals("admin") && password.equals("12345")) {
             // SUCCESS
-            Product_List.Product_ListJFrame_Shirts pantsPage = new Product_List.Product_ListJFrame_Shirts();
-            pantsPage.setLocationRelativeTo(null);
-            pantsPage.setVisible(true);
+            Product_ListJFrame_Shirts mainPage = new Product_ListJFrame_Shirts();
+            mainPage.setVisible(true);
             this.dispose();
         } else {
             // FAILURE
