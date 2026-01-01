@@ -112,6 +112,8 @@ public class Product {
             double itemTotal = item.getPrice() * qty;
             fwCart.write(item.getName() + "," + size + "," + qty + "," + item.getPrice() + "," + itemTotal + "\n");
             fwCart.close();
+            
+            updateInventoryStock(productName, size, qty); // This subtracts stock immediately
 
             JOptionPane.showMessageDialog(parent, productName + " added to cart!");
 
@@ -145,7 +147,7 @@ public class Product {
 
                 if (currentName.equalsIgnoreCase(name)) {
                     double price = Double.parseDouble(parts[parts.length - 5]);
-                    int total = Integer.parseInt(parts[parts.length - 4]);
+                    
                     int s = Integer.parseInt(parts[parts.length - 3]);
                     int m = Integer.parseInt(parts[parts.length - 2]);
                     int l = Integer.parseInt(parts[parts.length - 1]);
@@ -156,7 +158,7 @@ public class Product {
                         case "Medium" -> m -= qtyBought;
                         case "Large" -> l -= qtyBought;
                     }
-                    total -= qtyBought; // Always subtract from total too
+                    int total = s + m + l;
 
                     // Add the updated line back to content
                     newContent.append(currentName).append(" ").append((int)price).append(" ")

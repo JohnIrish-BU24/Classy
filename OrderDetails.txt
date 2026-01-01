@@ -10,3 +10,78 @@ CLS-3298R,White Pants,Large,9,599.0,5391.0
 CLS-3298R,Denim,Medium,4,899.0,3596.0
 CLS-9160D,Hiphop,Medium,3,549.0,1647.0
 CLS-5477A,Hiphop,Small,4,549.0,2196.0
+CLS-3902H,Black Pants,Medium,1,799.0,799.0
+CLS-3902H,Hiphop,Medium,1,549.0,549.0
+CLS-3902H,White Pants,Medium,1,599.0,599.0
+CLS-3902H,Jorts,Medium,1,799.0,799.0
+CLS-3902H,Denim,Medium,1,899.0,899.0
+CLS-3902H,Cat Shirt,Small,1,399.0,399.0
+CLS-3902H,Varsity,Small,1,499.0,499.0
+CLS-3902H,Mountain,Small,1,349.0,349.0
+CLS-3902H,Stripes,Small,1,399.0,399.0
+CLS-3902H,Cowgirl,Small,1,249.0,249.0
+CLS-3902H,Khaki Cat,Small,1,399.0,399.0
+CLS-3902H,Cat Shirt,Large,1,399.0,399.0
+CLS-3902H,Varsity,Large,1,499.0,499.0
+CLS-3902H,Mountain,Large,1,349.0,349.0
+CLS-3902H,Stripes,Large,1,399.0,399.0
+CLS-3902H,Cowgirl,Large,1,249.0,249.0
+CLS-3902H,Khaki Cat,Large,1,399.0,399.0
+CLS-3902H,Light Blue,Medium,1,1249.0,1249.0
+CLS-3902H,Floral Pink,Medium,1,899.0,899.0
+CLS-3902H,Black Dress,Medium,1,849.0,849.0
+CLS-3902H,Blue,Large,1,649.0,649.0
+CLS-3902H,Black Pink,Large,1,799.0,799.0
+CLS-3902H,Black Dress,Large,1,849.0,849.0
+CLS-3902H,Light Blue,Large,1,1249.0,1249.0
+CLS-3902H,Cat Shirt,Medium,1,399.0,399.0
+CLS-3902H,Varsity,Medium,1,499.0,499.0
+CLS-3902H,Mountain,Medium,1,349.0,349.0
+CLS-3902H,Stripes,Medium,1,399.0,399.0
+CLS-3902H,Black Pants,Small,1,799.0,799.0
+CLS-3902H,Cat Shirt,Small,1,399.0,399.0
+CLS-3902H,Varsity,Small,1,499.0,499.0
+CLS-5713M,Cat Shirt,Small,1,399.0,399.0
+CLS-5713M,Cat Shirt,Small,1,399.0,399.0
+CLS-5713M,Cat Shirt,Small,1,399.0,399.0
+CLS-5713M,Mountain,Small,1,349.0,349.0
+CLS-5713M,Mountain,Small,1,349.0,349.0
+CLS-5713M,Mountain,Small,1,349.0,349.0
+CLS-5713M,Stripes,Small,1,399.0,399.0
+CLS-5713M,Stripes,Small,1,399.0,399.0
+CLS-5713M,Stripes,Small,1,399.0,399.0
+CLS-5713M,Cat Shirt,Medium,1,399.0,399.0
+CLS-5713M,Cat Shirt,Medium,1,399.0,399.0
+CLS-5713M,Cat Shirt,Medium,1,399.0,399.0
+CLS-5713M,Cat Shirt,Medium,1,399.0,399.0
+CLS-5713M,Mountain,Medium,1,349.0,349.0
+CLS-5713M,Mountain,Medium,1,349.0,349.0
+CLS-5713M,Mountain,Medium,1,349.0,349.0
+CLS-5713M,Mountain,Medium,1,349.0,349.0
+CLS-5713M,Stripes,Medium,1,399.0,399.0
+CLS-5713M,Stripes,Medium,1,399.0,399.0
+CLS-5713M,Stripes,Medium,1,399.0,399.0
+CLS-5713M,Star Pants,Small,1,799.0,799.0
+CLS-5713M,Star Pants,Small,1,799.0,799.0
+CLS-5713M,Star Pants,Small,1,799.0,799.0
+CLS-5713M,Hiphop,Small,1,549.0,549.0
+CLS-5713M,Hiphop,Small,1,549.0,549.0
+CLS-5713M,Hiphop,Small,1,549.0,549.0
+CLS-5713M,Denim,Small,1,899.0,899.0
+CLS-5713M,Denim,Small,1,899.0,899.0
+CLS-5713M,Denim,Small,1,899.0,899.0
+CLS-5713M,Black Pants,Medium,1,799.0,799.0
+CLS-5713M,Black Pants,Medium,1,799.0,799.0
+CLS-5713M,Black Pants,Medium,1,799.0,799.0
+CLS-5713M,Black Pants,Medium,1,799.0,799.0
+CLS-6324X,White Pants,Medium,1,599.0,599.0
+CLS-1615W,Varsity,Medium,1,499.0,499.0
+CLS-8740U,Mountain,Large,1,349.0,349.0
+CLS-5060L,Mountain,Large,1,349.0,349.0
+CLS-2266A,Mountain,Large,1,349.0,349.0
+CLS-8783C,Mountain,Large,1,349.0,349.0
+CLS-2168T,White Pants,Medium,1,599.0,599.0
+CLS-2065C,Floral Pink,Small,1,899.0,899.0
+CLS-2065C,Floral Pink,Small,1,899.0,899.0
+CLS-2065C,Floral Pink,Small,1,899.0,899.0
+CLS-4821E,Light Blue,Small,1,1249.0,1249.0
