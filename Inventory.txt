@@ -1,18 +1,18 @@
-Cat Shirt 399 45
-Varsity 499 21
-Mountain 349 40
-Stripes 399 30
-Cowgirl 249 10
-Khaki Cat 399 5
-Black Pants 799 18
-Star Pants 799 20
-Hiphop 549 10
-White Pants 599 20
-Jorts 799 20
-Denim 899 30
-Light Blue 1249 20
-Floral White 849 10
-Floral Pink 899 5
-Black Dress 849 15
-Blue 649 20
-Black Pink 799 10
+Cat Shirt 399 45 15 15 15
+Varsity 499 21 7 7 7
+Mountain 349 40 10 15 15
+Stripes 399 30 10 10 10
+Cowgirl 249 10 3 3 4
+Khaki Cat 399 10 3 2 5
+Black Pants 799 10 6 4 0
+Star Pants 799 15 10 0 5
+Hiphop 549 30 10 10 10
+White Pants 599 15 5 5 5
+Jorts 799 20 5 10 5
+Denim 899 30 10 10 10
+Light Blue 1249 20 10 5 5
+Floral White 849 10 10 0 0
+Floral Pink 899 5 2 3 0
+Black Dress 849 15 5 5 5
+Blue 649 20 10 0 10
+Black Pink 799 10 0 0 10

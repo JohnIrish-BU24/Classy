@@ -5,6 +5,7 @@
 package classy.views.Product_List;
 
 import classy.services.InventoryService;
+import classy.models.Product;
 
 import classy.views.Cart.CartJFrame;
 import classy.views.Orders.OrdersJFrame;
@@ -40,32 +41,53 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
     
     public void loadProductData() {
         try {
-            File file = new File("Inventory.txt");
-            Scanner reader = new Scanner(file);
+            java.io.File file = new java.io.File("Inventory.txt");
+            if (!file.exists()) {
+                System.out.println("ERROR: Inventory.txt not found!");
+                return;
+            }
+
+            java.util.Scanner reader = new java.util.Scanner(file);
+
             while (reader.hasNextLine()) {
                 String line = reader.nextLine().trim();
                 if (line.isEmpty()) continue;
 
-                String[] parts = line.split(" ");
-                if (parts.length >= 3) {
-                    int stock = Integer.parseInt(parts[parts.length - 1]);
-                    double price = Double.parseDouble(parts[parts.length - 2]);
+                String[] parts = line.split("\\s+");
+                int len = parts.length;
 
-                    StringBuilder nameBuilder = new StringBuilder();
-                    for (int i = 0; i < parts.length - 2; i++) {
-                        nameBuilder.append(parts[i]).append(i == parts.length - 3 ? "" : " ");
-                    }
-                    String name = nameBuilder.toString();
+                // We need at least 6 columns: Name... Price Total S M L
+                if (len < 6) continue; 
 
-                    // OOP: Create a Product object instead of a String array
-                    classy.models.Product prod = new classy.models.Product(name, stock, price, "Default"); 
-                    productMap.put(name, prod);
+                // 1. Parse Numbers from the END of the line
+                int l = Integer.parseInt(parts[len - 1]);
+                int m = Integer.parseInt(parts[len - 2]);
+                int s = Integer.parseInt(parts[len - 3]);
+                int total = Integer.parseInt(parts[len - 4]);
+                double price = Double.parseDouble(parts[len - 5]);
+
+                // 2. Parse Name from the START of the line
+                StringBuilder nameBuilder = new StringBuilder();
+                for (int i = 0; i < len - 5; i++) {
+                    nameBuilder.append(parts[i]).append(" ");
                 }
+                String name = nameBuilder.toString().trim(); // e.g., "Cat Shirt"
+
+                // 3. Store in Map (Create "Virtual Products" for each size)
+                // Base Product (Total Stock)
+                productMap.put(name, new classy.models.Product(name, total, price, "Sizes"));
+                // Specific Sizes
+                productMap.put(name + " Small", new classy.models.Product(name, s, price, "Small"));
+                productMap.put(name + " Medium", new classy.models.Product(name, m, price, "Medium"));
+                productMap.put(name + " Large", new classy.models.Product(name, l, price, "Large"));
             }
             reader.close();
+
+            // Refresh UI
             displayProductInfo(); 
+
         } catch (Exception e) {
-            System.out.println("Error reading file: " + e.getMessage());
+            e.printStackTrace();
         }
     }
     
@@ -79,17 +101,67 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
         updateLabel("Black Pink", jLabel18, jLabel21, jLabel42);
     }
     
-    private void updateLabel(String id, javax.swing.JLabel idLbl, javax.swing.JLabel priceLbl, javax.swing.JLabel stockLbl) {
-    if (productMap.containsKey(id)) {
-        // OOP: Retrieve the object
-        classy.models.Product prod = productMap.get(id);
-        
-        // Use getters from your Product class
-        idLbl.setText(prod.getName());
-        priceLbl.setText(String.valueOf(prod.getPrice()));
-        stockLbl.setText(String.valueOf(prod.getQuantity()));
+    private void updateLabel(String baseName, javax.swing.JLabel idLbl, javax.swing.JLabel priceLbl, javax.swing.JLabel stockLbl) {
+        // 1. Set Name
+        idLbl.setText(baseName);
+
+        // 2. Set Price (Look up base product)
+        if (productMap.containsKey(baseName)) {
+            double price = productMap.get(baseName).getPrice();
+            priceLbl.setText(String.format("₱%.2f", price));
+        } else {
+            priceLbl.setText("N/A");
+        }
+
+        // 3. Set Stock (Dynamic based on Dropdown)
+        int currentStock = 0;
+        String selectedSize = "Sizes";
+
+        if (jComboBox1 != null && jComboBox1.getSelectedItem() != null) {
+            selectedSize = jComboBox1.getSelectedItem().toString();
+        }
+
+        if (selectedSize.equals("Sizes") || selectedSize.equals("Select")) {
+            // Show Total Stock
+            if (productMap.containsKey(baseName)) {
+                currentStock = productMap.get(baseName).getQuantity();
+            }
+        } else {
+            // Show Specific Size Stock (e.g., "Cat Shirt Small")
+            String specificKey = baseName + " " + selectedSize; 
+            if (productMap.containsKey(specificKey)) {
+                currentStock = productMap.get(specificKey).getQuantity();
+            }
+        }
+
+        stockLbl.setText(String.valueOf(currentStock));
     }
-}
+    
+    private void handleAddToCart(String baseName, javax.swing.JSpinner spinner) {
+        int qty = (Integer) spinner.getValue();
+        String size = jComboBox1.getSelectedItem().toString(); 
+
+        if (size.equals("Sizes") || size.equals("Select")) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Please select a specific Size.");
+            return;
+        }
+
+        // Construct specific key to check stock
+        String specificKey = baseName + " " + size;
+
+        if (productMap.containsKey(specificKey) && qty > 0) {
+            // Call Service
+            classy.services.InventoryService.addToCart(this, baseName, size, qty, "Shirts");
+
+            // Reset & Refresh
+            spinner.setValue(0);
+            loadProductData(); // Re-read file to update labels immediately
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Invalid Quantity or Item Unavailable.");
+        }
+    }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -292,7 +364,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
 
         jLabel15.setText("$$$");
         jPanel6.add(jLabel15);
-        jLabel15.setBounds(49, 118, 43, 16);
+        jLabel15.setBounds(49, 118, 60, 16);
 
         jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jPanel6.add(jSpinner1);
@@ -351,7 +423,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
 
         jLabel16.setText("$$$");
         jPanel7.add(jLabel16);
-        jLabel16.setBounds(49, 118, 43, 16);
+        jLabel16.setBounds(49, 118, 60, 16);
 
         jSpinner2.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jPanel7.add(jSpinner2);
@@ -398,7 +470,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
 
         jLabel17.setText("$$$");
         jPanel8.add(jLabel17);
-        jLabel17.setBounds(49, 118, 43, 16);
+        jLabel17.setBounds(49, 118, 60, 16);
 
         jSpinner3.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jPanel8.add(jSpinner3);
@@ -445,7 +517,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
 
         jLabel21.setText("$$$");
         jPanel9.add(jLabel21);
-        jLabel21.setBounds(49, 118, 43, 16);
+        jLabel21.setBounds(49, 118, 60, 16);
 
         jSpinner4.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jPanel9.add(jSpinner4);
@@ -492,7 +564,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
 
         jLabel26.setText("$$$");
         jPanel10.add(jLabel26);
-        jLabel26.setBounds(49, 118, 43, 16);
+        jLabel26.setBounds(49, 118, 60, 16);
 
         jSpinner5.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jPanel10.add(jSpinner5);
@@ -539,7 +611,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
 
         jLabel31.setText("$$$");
         jPanel11.add(jLabel31);
-        jLabel31.setBounds(49, 118, 43, 16);
+        jLabel31.setBounds(49, 118, 60, 16);
 
         jSpinner6.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jPanel11.add(jSpinner6);
@@ -646,7 +718,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
+        displayProductInfo();
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -661,17 +733,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
         // Blue
-        String name = "Blue"; 
-        int qty = (Integer) jSpinner1.getValue();
-        String size = jComboBox1.getSelectedItem().toString(); 
-
-        // Safety check using your productMap object
-        if(productMap.containsKey(name) && qty > 0) {
-            classy.services.InventoryService.addToCart(this, name, size, qty, "Dresses");
-            jSpinner1.setValue(0);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
-        }
+        handleAddToCart("Hiphop", jSpinner5);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -695,81 +757,31 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
         // Light Blue
-        String name = "Light Blue"; 
-        int qty = (Integer) jSpinner2.getValue();
-        String size = jComboBox1.getSelectedItem().toString(); 
-
-        // Safety check using your productMap object
-        if(productMap.containsKey(name) && qty > 0) {
-            classy.services.InventoryService.addToCart(this, name, size, qty, "Dresses");
-            jSpinner2.setValue(0);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
-        }
+        handleAddToCart("Light Blue", jSpinner2);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
         // Black Dress
-        String name = "Black Dress"; 
-        int qty = (Integer) jSpinner3.getValue();
-        String size = jComboBox1.getSelectedItem().toString(); 
-
-        // Safety check using your productMap object
-        if(productMap.containsKey(name) && qty > 0) {
-            classy.services.InventoryService.addToCart(this, name, size, qty, "Dresses");
-            jSpinner3.setValue(0);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
-        }
+        handleAddToCart("Black Dress", jSpinner3);
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
         // Black Pink
-        String name = "Black Pink"; 
-        int qty = (Integer) jSpinner4.getValue();
-        String size = jComboBox1.getSelectedItem().toString(); 
-
-        // Safety check using your productMap object
-        if(productMap.containsKey(name) && qty > 0) {
-            classy.services.InventoryService.addToCart(this, name, size, qty, "Dresses");
-            jSpinner4.setValue(0);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
-        }
+        handleAddToCart("Black Pink", jSpinner4);
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         // TODO add your handling code here:
         // Floral Pink
-        String name = "Floral Pink"; 
-        int qty = (Integer) jSpinner5.getValue();
-        String size = jComboBox1.getSelectedItem().toString(); 
-
-        // Safety check using your productMap object
-        if(productMap.containsKey(name) && qty > 0) {
-            classy.services.InventoryService.addToCart(this, name, size, qty, "Dresses");
-            jSpinner5.setValue(0);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
-        }
+        handleAddToCart("Floral Pink", jSpinner5);
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         // TODO add your handling code here:
         // Floral White
-        String name = "Floral White"; 
-        int qty = (Integer) jSpinner6.getValue();
-        String size = jComboBox1.getSelectedItem().toString(); 
-
-        // Safety check using your productMap object
-        if(productMap.containsKey(name) && qty > 0) {
-            classy.services.InventoryService.addToCart(this, name, size, qty, "Dresses");
-            jSpinner6.setValue(0);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please select a valid quantity.");
-        }
+        handleAddToCart("Floral White", jSpinner6);
     }//GEN-LAST:event_jButton13ActionPerformed
 
     /**

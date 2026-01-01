@@ -32,21 +32,19 @@ public class OrdersJFrame extends javax.swing.JFrame {
      */
     public OrdersJFrame() {
         initComponents();
-        
         this.setSize(1250, 670);
-        
         this.setResizable(false);
-        
         this.setLocationRelativeTo(null);
         
+        // --- SCROLLABILITY & BUTTONS ---
         jTable1.setRowHeight(40);
-        jTable1.getColumnModel().getColumn(3).setPreferredWidth(100);
-        jTable1.getColumnModel().getColumn(3).setMinWidth(100);
-        jTable1.getColumnModel().getColumn(3).setMaxWidth(100);
         
-        // Set the renderer and editor for the specific column index (e.g., 4)
+        // Set "Receipt" button on Column 3 (4th column: Date, Tracker, Total, Receipt)
         jTable1.getColumnModel().getColumn(3).setCellRenderer(new ButtonRenderer());
         jTable1.getColumnModel().getColumn(3).setCellEditor(new ButtonEditor(new javax.swing.JCheckBox(), jTable1));
+        
+        // Make the table scrollable (NetBeans does this in initComponents, but good to ensure)
+        jScrollPane1.setViewportView(jTable1); 
         
         loadOrdersTable();
     }
