@@ -43,6 +43,16 @@ public class OrdersJFrame extends javax.swing.JFrame {
         jTable1.getColumnModel().getColumn(3).setCellRenderer(new ButtonRenderer());
         jTable1.getColumnModel().getColumn(3).setCellEditor(new ButtonEditor(new javax.swing.JCheckBox(), jTable1));
         
+        // --- FIX: LOCK THE BUTTON WIDTH ---
+        // 1. Set the preferred width (e.g., 120 pixels)
+        jTable1.getColumnModel().getColumn(3).setPreferredWidth(120);
+
+        // 2. Set the maximum width (Prevents it from stretching)
+        jTable1.getColumnModel().getColumn(3).setMaxWidth(120);
+
+        // 3. Set the minimum width (Prevents it from shrinking too small)
+        jTable1.getColumnModel().getColumn(3).setMinWidth(120);
+        
         // Make the table scrollable (NetBeans does this in initComponents, but good to ensure)
         jScrollPane1.setViewportView(jTable1); 
         
