@@ -1,0 +1,6 @@
+CLS-9936C,Cat Shirt,Medium,2,399.0,798.0
+CLS-9936C,Cat Shirt,Medium,2,399.0,798.0
+CLS-9936C,Cowgirl,Large,4,249.0,996.0
+CLS-9936C,Mountain,Large,3,349.0,1047.0
+CLS-9936C,Stripes,Large,2,399.0,798.0
+CLS-9936C,Black Dress,Large,4,849.0,3396.0

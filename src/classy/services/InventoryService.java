@@ -2,11 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package classy.services;
 
 import classy.models.Product;
 import classy.models.Shirts;
 import classy.models.Pants;
+// import classy.models.Dresses; // Add this if you have the Dresses model
+
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -36,34 +42,43 @@ public class InventoryService {
                 return;
             }
 
-            // 1. SPACE-RESISTANT PARSING & STOCK CHECK
+            // 1. STOCK CHECK (Updated for 6-Column Format)
             Scanner scanner = new Scanner(invFile);
             boolean found = false;
             double price = 0.0;
-            int currentStock = 0;
+            int availableStock = 0;
             
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine().trim();
                 if (line.isEmpty()) continue;
                 
-                String[] parts = line.split("\\s+"); // Split by whitespace
-                if (parts.length < 3) continue;
+                String[] parts = line.split("\\s+");
+                int len = parts.length;
+                if (len < 6) continue; // Skip invalid lines
 
-                // Logic: Price is 2nd to last, Stock is last
-                double p = Double.parseDouble(parts[parts.length - 2]);
-                int s = Integer.parseInt(parts[parts.length - 1]);
-                
-                // Reconstruct Name (Everything before Price)
+                // A. Parse Name (Everything before the last 5 columns)
                 StringBuilder nameBuilder = new StringBuilder();
-                for (int i = 0; i < parts.length - 2; i++) {
+                for (int i = 0; i < len - 5; i++) {
                     nameBuilder.append(parts[i]).append(" ");
                 }
                 String currentName = nameBuilder.toString().trim();
 
+                // B. Check Match
                 if (currentName.equalsIgnoreCase(name)) {
                     found = true;
-                    price = p;
-                    currentStock = s;
+                    // C. Get Price (5th from last)
+                    price = Double.parseDouble(parts[len - 5]);
+                    
+                    // D. Get Specific Stock based on Size
+                    // Format: ... Price Total S M L
+                    int s = Integer.parseInt(parts[len - 3]);
+                    int m = Integer.parseInt(parts[len - 2]);
+                    int l = Integer.parseInt(parts[len - 1]);
+                    
+                    if (size.equalsIgnoreCase("Small")) availableStock = s;
+                    else if (size.equalsIgnoreCase("Medium")) availableStock = m;
+                    else if (size.equalsIgnoreCase("Large")) availableStock = l;
+                    
                     break;
                 }
             }
@@ -75,18 +90,19 @@ public class InventoryService {
             }
             
             // 2. NEGATIVE STOCK CHECK
-            if (currentStock < qty) {
-                JOptionPane.showMessageDialog(parent, "Not enough stock! Available: " + currentStock);
+            if (availableStock < qty) {
+                JOptionPane.showMessageDialog(parent, "Not enough stock! Available: " + availableStock);
                 return;
             }
 
-            // 3. IMMEDIATE DEDUCTION (Update Inventory File)
+            // 3. IMMEDIATE DEDUCTION (Updates the text file)
             updateInventoryStock(name, size, qty);
 
-            // 4. WRITE TO CART (Polymorphism)
+            // 4. WRITE TO CART
             Product item;
             if (category.equalsIgnoreCase("Shirts")) item = new Shirts(name, qty, price, size);
             else if (category.equalsIgnoreCase("Pants")) item = new Pants(name, qty, price, size);
+            // else if (category.equalsIgnoreCase("Dresses")) item = new Dresses(name, qty, price, size);
             else item = new Product(name, qty, price, size);
 
             FileWriter fw = new FileWriter(CART_FILE, true);
@@ -102,9 +118,10 @@ public class InventoryService {
         }
     }
 
+    // --- HELPER: UPDATES FILE FOR 6-COLUMN FORMAT ---
     private static void updateInventoryStock(String productName, String size, int qtyToDeduct) {
         List<String> lines = new ArrayList<>();
-        File file = new File("Inventory.txt");
+        File file = new File(INVENTORY_FILE);
         
         try (Scanner sc = new Scanner(file)) {
             while (sc.hasNextLine()) {
@@ -122,32 +139,23 @@ public class InventoryService {
                 }
                 String currentName = nameBuilder.toString().trim();
 
-                // CHECK MATCH (Ignore " Small" suffix if passed from button)
-                String searchName = productName.replace(" Small", "").replace(" Medium", "").replace(" Large", "");
-                
-                if (currentName.equalsIgnoreCase(searchName)) {
-                    // Parse existing stocks
+                if (currentName.equalsIgnoreCase(productName)) {
+                    // Parse Numbers
                     double price = Double.parseDouble(parts[len - 5]);
                     int total = Integer.parseInt(parts[len - 4]);
                     int s = Integer.parseInt(parts[len - 3]);
                     int m = Integer.parseInt(parts[len - 2]);
                     int l = Integer.parseInt(parts[len - 1]);
 
-                    // DEDUCT LOGIC
-                    boolean enoughStock = true;
-                    if (size.equalsIgnoreCase("Small")) {
-                        if(s >= qtyToDeduct) s -= qtyToDeduct; else enoughStock = false;
-                    } else if (size.equalsIgnoreCase("Medium")) {
-                        if(m >= qtyToDeduct) m -= qtyToDeduct; else enoughStock = false;
-                    } else if (size.equalsIgnoreCase("Large")) {
-                        if(l >= qtyToDeduct) l -= qtyToDeduct; else enoughStock = false;
-                    }
+                    // Deduct Logic
+                    if (size.equalsIgnoreCase("Small")) s = Math.max(0, s - qtyToDeduct);
+                    else if (size.equalsIgnoreCase("Medium")) m = Math.max(0, m - qtyToDeduct);
+                    else if (size.equalsIgnoreCase("Large")) l = Math.max(0, l - qtyToDeduct);
                     
-                    if (enoughStock) {
-                        total -= qtyToDeduct; // Always deduct from total
-                    }
+                    // Recalculate Total
+                    total = s + m + l;
 
-                    // Reconstruct Line: Name Price Total S M L
+                    // Rebuild Line: Name Price Total S M L
                     lines.add(currentName + " " + price + " " + total + " " + s + " " + m + " " + l);
                 } else {
                     lines.add(line);
