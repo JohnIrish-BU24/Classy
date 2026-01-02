@@ -50,27 +50,25 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
                 String[] parts = line.split("\\s+");
                 int len = parts.length;
 
-                // We need at least 6 columns: Name... Price Total S M L
+                // Safety: We need at least 6 columns
                 if (len < 6) continue; 
 
-                // 1. Parse Numbers from the END of the line
+                // 1. Parse Numbers from the END
                 int l = Integer.parseInt(parts[len - 1]);
                 int m = Integer.parseInt(parts[len - 2]);
                 int s = Integer.parseInt(parts[len - 3]);
                 int total = Integer.parseInt(parts[len - 4]);
                 double price = Double.parseDouble(parts[len - 5]);
 
-                // 2. Parse Name from the START of the line
+                // 2. Parse Name from the START
                 StringBuilder nameBuilder = new StringBuilder();
                 for (int i = 0; i < len - 5; i++) {
                     nameBuilder.append(parts[i]).append(" ");
                 }
-                String name = nameBuilder.toString().trim(); // e.g., "Cat Shirt"
+                String name = nameBuilder.toString().trim();
 
-                // 3. Store in Map (Create "Virtual Products" for each size)
-                // Base Product (Total Stock)
+                // 3. Store in Map
                 productMap.put(name, new classy.models.Product(name, total, price, "Sizes"));
-                // Specific Sizes
                 productMap.put(name + " Small", new classy.models.Product(name, s, price, "Small"));
                 productMap.put(name + " Medium", new classy.models.Product(name, m, price, "Medium"));
                 productMap.put(name + " Large", new classy.models.Product(name, l, price, "Large"));
@@ -136,31 +134,43 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
         int qty = (Integer) spinner.getValue();
         String size = jComboBox1.getSelectedItem().toString(); 
 
-        // 1. Check Size Selection
+        // 1. Check Size
         if (size.equals("Sizes") || size.equals("Select")) {
             javax.swing.JOptionPane.showMessageDialog(this, "Please select a specific Size.");
             return;
         }
 
-        // 2. Check Quantity (SPECIFIC ERROR)
+        // 2. Check Quantity
         if (qty <= 0) {
             javax.swing.JOptionPane.showMessageDialog(this, "Please enter a valid quantity.");
             return;
         }
 
-        // 3. Check Product Existence
+        // 3. Check Product & Stock
         String specificKey = baseName + " " + size;
-        
+
         if (productMap.containsKey(specificKey)) {
-            // Call Service (The Service handles the "Not Enough Stock" check)
-            InventoryService.addToCart(this, baseName, size, qty, "Shirts");
-            
+            // Pass "Shirts" category
+            classy.services.InventoryService.addToCart(this, baseName, size, qty, "Shirts");
+
             // Reset & Refresh
             spinner.setValue(0);
             loadProductData(); 
         } else {
-            // This only shows if the item is truly missing from the file
             javax.swing.JOptionPane.showMessageDialog(this, "Item Unavailable.");
+        }
+    }
+    
+    private void updateMeasurementLabel() {
+        String selectedSize = jComboBox1.getSelectedItem().toString();
+
+        if (selectedSize.equals("Sizes") || selectedSize.equals("Select")) {
+            // Hide if no size selected (Make sure lblMeasurement exists in Design!)
+            if(lblMeasurement != null) lblMeasurement.setText(""); 
+        } else {
+            // USE SHIRTS MODEL
+            classy.models.Shirts temp = new classy.models.Shirts("Temp", 0, 0, selectedSize);
+            if(lblMeasurement != null) lblMeasurement.setText(temp.getMeasurementDescription());
         }
     }
 
@@ -248,6 +258,7 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
         jLabel32 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
+        lblMeasurement = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(1000, 600));
@@ -642,6 +653,12 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
         jPanel5.add(jPanel11);
         jPanel11.setBounds(370, 80, 240, 220);
 
+        lblMeasurement.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblMeasurement.setText("size measurements ");
+        lblMeasurement.addActionListener(this::lblMeasurementActionPerformed);
+        jPanel5.add(lblMeasurement);
+        lblMeasurement.setBounds(480, 20, 140, 23);
+
         jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 970, 560));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -775,6 +792,23 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
         handleAddToCart("Varsity", jSpinner6);
     }//GEN-LAST:event_jButton13ActionPerformed
 
+    private void lblMeasurementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblMeasurementActionPerformed
+        String selectedSize = jComboBox1.getSelectedItem().toString();
+
+        if (selectedSize.equals("Sizes") || selectedSize.equals("Select")) {
+            javax.swing.JOptionPane.showMessageDialog(this, 
+                "Please select a Size first.", "Size Description", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            // USE SHIRTS MODEL
+            classy.models.Shirts temp = new classy.models.Shirts("Temp", 0, 0, selectedSize);
+
+            javax.swing.JOptionPane.showMessageDialog(this, 
+                "Measurements for " + selectedSize + ":\n\n" + temp.getMeasurementDescription(), 
+                "Size Description", 
+                javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_lblMeasurementActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -876,5 +910,6 @@ public class Product_ListJFrame_Shirts extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinner4;
     private javax.swing.JSpinner jSpinner5;
     private javax.swing.JSpinner jSpinner6;
+    private javax.swing.JButton lblMeasurement;
     // End of variables declaration//GEN-END:variables
 }
