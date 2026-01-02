@@ -378,7 +378,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
         jPanel6.add(jButton8);
         jButton8.setBounds(10, 180, 222, 34);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Product_List/Dresses/17.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/classy/views/Product_List/17.png"))); // NOI18N
         jLabel7.setText("jLabel7");
         jPanel6.add(jLabel7);
         jLabel7.setBounds(70, 0, 100, 100);
@@ -437,7 +437,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
         jPanel7.add(jButton9);
         jButton9.setBounds(10, 180, 222, 34);
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Product_List/Dresses/13.png"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/classy/views/Product_List/13.png"))); // NOI18N
         jLabel10.setText("jLabel7");
         jPanel7.add(jLabel10);
         jLabel10.setBounds(70, 0, 100, 100);
@@ -484,7 +484,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
         jPanel8.add(jButton10);
         jButton10.setBounds(10, 180, 222, 34);
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Product_List/Dresses/16.png"))); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/classy/views/Product_List/16.png"))); // NOI18N
         jLabel14.setText("jLabel7");
         jPanel8.add(jLabel14);
         jLabel14.setBounds(70, 0, 100, 100);
@@ -531,7 +531,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
         jPanel9.add(jButton11);
         jButton11.setBounds(10, 180, 222, 34);
 
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Product_List/Dresses/18.png"))); // NOI18N
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/classy/views/Product_List/18.png"))); // NOI18N
         jLabel22.setText("jLabel7");
         jPanel9.add(jLabel22);
         jLabel22.setBounds(70, 0, 100, 100);
@@ -578,7 +578,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
         jPanel10.add(jButton12);
         jButton12.setBounds(10, 180, 222, 34);
 
-        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Product_List/Dresses/15.png"))); // NOI18N
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/classy/views/Product_List/15.png"))); // NOI18N
         jLabel27.setText("jLabel7");
         jPanel10.add(jLabel27);
         jLabel27.setBounds(70, 0, 100, 100);
@@ -625,7 +625,7 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
         jPanel11.add(jButton13);
         jButton13.setBounds(10, 180, 222, 34);
 
-        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Product_List/Dresses/14.png"))); // NOI18N
+        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/classy/views/Product_List/14.png"))); // NOI18N
         jLabel32.setText("jLabel7");
         jPanel11.add(jLabel32);
         jLabel32.setBounds(70, 0, 100, 100);

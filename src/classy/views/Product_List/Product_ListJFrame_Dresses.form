@@ -372,7 +372,7 @@
                     <Component class="javax.swing.JLabel" name="jLabel7">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/Product_List/Dresses/17.png"/>
+                          <Image iconType="3" name="/classy/views/Product_List/17.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="jLabel7"/>
                       </Properties>
@@ -539,7 +539,7 @@
                     <Component class="javax.swing.JLabel" name="jLabel10">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/Product_List/Dresses/13.png"/>
+                          <Image iconType="3" name="/classy/views/Product_List/13.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="jLabel7"/>
                       </Properties>
@@ -664,7 +664,7 @@
                     <Component class="javax.swing.JLabel" name="jLabel14">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/Product_List/Dresses/16.png"/>
+                          <Image iconType="3" name="/classy/views/Product_List/16.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="jLabel7"/>
                       </Properties>
@@ -789,7 +789,7 @@
                     <Component class="javax.swing.JLabel" name="jLabel22">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/Product_List/Dresses/18.png"/>
+                          <Image iconType="3" name="/classy/views/Product_List/18.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="jLabel7"/>
                       </Properties>
@@ -914,7 +914,7 @@
                     <Component class="javax.swing.JLabel" name="jLabel27">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/Product_List/Dresses/15.png"/>
+                          <Image iconType="3" name="/classy/views/Product_List/15.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="jLabel7"/>
                       </Properties>
@@ -1039,7 +1039,7 @@
                     <Component class="javax.swing.JLabel" name="jLabel32">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/Product_List/Dresses/14.png"/>
+                          <Image iconType="3" name="/classy/views/Product_List/14.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="jLabel7"/>
                       </Properties>
