@@ -19,16 +19,16 @@ public class Dresses extends Product {
     private void calculateMeasurements() {
         switch (this.getSize()) {
             case "Small": 
-                this.bust = "32-34"; 
-                this.length = 34; 
-                break;
-            case "Medium": 
-                this.bust = "35-37"; 
+                this.bust = "34"; 
                 this.length = 36; 
                 break;
-            case "Large": 
-                this.bust = "38-40"; 
+            case "Medium": 
+                this.bust = "38"; 
                 this.length = 38; 
+                break;
+            case "Large": 
+                this.bust = "42"; 
+                this.length = 40; 
                 break;
             default: 
                 this.bust = "0"; 

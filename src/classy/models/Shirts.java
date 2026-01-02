@@ -19,16 +19,16 @@ public class Shirts extends Product {
     private void calculateMeasurements() {
         switch (this.getSize()) {
             case "Small": 
-                this.chestWidth = 19.0; 
-                this.bodyLength = 27.0; 
-                break;
-            case "Medium": 
-                this.chestWidth = 20.5; 
+                this.chestWidth = 36.0; 
                 this.bodyLength = 28.0; 
                 break;
-            case "Large": 
-                this.chestWidth = 22.0; 
+            case "Medium": 
+                this.chestWidth = 40.0; 
                 this.bodyLength = 29.0; 
+                break;
+            case "Large": 
+                this.chestWidth = 44.0; 
+                this.bodyLength = 30.0; 
                 break;
             default: 
                 this.chestWidth = 0; 

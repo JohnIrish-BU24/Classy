@@ -366,23 +366,23 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
 
         jLabel3.setText("Product ID");
         jPanel6.add(jLabel3);
-        jLabel3.setBounds(90, 100, 70, 16);
+        jLabel3.setBounds(90, 100, 70, 17);
 
         jLabel4.setText("Price:");
         jPanel6.add(jLabel4);
-        jLabel4.setBounds(15, 118, 60, 16);
+        jLabel4.setBounds(15, 118, 60, 17);
 
         jLabel5.setText("Quantity:");
         jPanel6.add(jLabel5);
-        jLabel5.setBounds(15, 143, 49, 16);
+        jLabel5.setBounds(15, 143, 90, 17);
 
         jLabel15.setText("$$$");
         jPanel6.add(jLabel15);
-        jLabel15.setBounds(49, 118, 60, 16);
+        jLabel15.setBounds(49, 118, 60, 17);
 
         jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jPanel6.add(jSpinner1);
-        jSpinner1.setBounds(68, 140, 64, 22);
+        jSpinner1.setBounds(68, 140, 64, 23);
 
         jButton8.setBackground(new java.awt.Color(102, 51, 0));
         jButton8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -399,11 +399,11 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
 
         jLabel43.setText("Stock:");
         jPanel6.add(jLabel43);
-        jLabel43.setBounds(160, 120, 43, 16);
+        jLabel43.setBounds(160, 120, 43, 17);
 
         jLabel36.setText("#");
         jPanel6.add(jLabel36);
-        jLabel36.setBounds(200, 120, 40, 16);
+        jLabel36.setBounds(200, 120, 40, 17);
 
         jPanel5.add(jPanel6);
         jPanel6.setBounds(370, 320, 240, 220);
@@ -419,23 +419,23 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
 
         jLabel6.setText("Product ID");
         jPanel7.add(jLabel6);
-        jLabel6.setBounds(90, 100, 80, 16);
+        jLabel6.setBounds(90, 100, 80, 17);
 
         jLabel8.setText("Price:");
         jPanel7.add(jLabel8);
-        jLabel8.setBounds(15, 118, 50, 16);
+        jLabel8.setBounds(15, 118, 50, 17);
 
         jLabel9.setText("Quantity:");
         jPanel7.add(jLabel9);
-        jLabel9.setBounds(15, 143, 49, 16);
+        jLabel9.setBounds(15, 143, 120, 17);
 
         jLabel16.setText("$$$");
         jPanel7.add(jLabel16);
-        jLabel16.setBounds(49, 118, 60, 16);
+        jLabel16.setBounds(49, 118, 60, 17);
 
         jSpinner2.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jPanel7.add(jSpinner2);
-        jSpinner2.setBounds(68, 140, 64, 22);
+        jSpinner2.setBounds(68, 140, 64, 23);
 
         jButton9.setBackground(new java.awt.Color(102, 51, 0));
         jButton9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -452,11 +452,11 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
 
         jLabel38.setText("Stock:");
         jPanel7.add(jLabel38);
-        jLabel38.setBounds(150, 120, 40, 16);
+        jLabel38.setBounds(150, 120, 40, 17);
 
         jLabel44.setText("#");
         jPanel7.add(jLabel44);
-        jLabel44.setBounds(200, 120, 43, 16);
+        jLabel44.setBounds(200, 120, 43, 17);
 
         jPanel5.add(jPanel7);
         jPanel7.setBounds(60, 80, 240, 220);
@@ -466,23 +466,23 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
 
         jLabel11.setText("Product ID");
         jPanel8.add(jLabel11);
-        jLabel11.setBounds(90, 100, 80, 16);
+        jLabel11.setBounds(90, 100, 80, 17);
 
         jLabel12.setText("Price:");
         jPanel8.add(jLabel12);
-        jLabel12.setBounds(15, 118, 40, 16);
+        jLabel12.setBounds(15, 118, 40, 17);
 
         jLabel13.setText("Quantity:");
         jPanel8.add(jLabel13);
-        jLabel13.setBounds(15, 143, 49, 16);
+        jLabel13.setBounds(15, 143, 120, 17);
 
         jLabel17.setText("$$$");
         jPanel8.add(jLabel17);
-        jLabel17.setBounds(49, 118, 60, 16);
+        jLabel17.setBounds(49, 118, 60, 17);
 
         jSpinner3.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jPanel8.add(jSpinner3);
-        jSpinner3.setBounds(68, 140, 64, 22);
+        jSpinner3.setBounds(68, 140, 64, 23);
 
         jButton10.setBackground(new java.awt.Color(102, 51, 0));
         jButton10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -499,11 +499,11 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
 
         jLabel33.setText("Stock:");
         jPanel8.add(jLabel33);
-        jLabel33.setBounds(150, 120, 50, 16);
+        jLabel33.setBounds(150, 120, 50, 17);
 
         jLabel39.setText("#");
         jPanel8.add(jLabel39);
-        jLabel39.setBounds(200, 120, 43, 16);
+        jLabel39.setBounds(200, 120, 43, 17);
 
         jPanel5.add(jPanel8);
         jPanel8.setBounds(60, 320, 240, 220);
@@ -513,23 +513,23 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
 
         jLabel18.setText("Product ID");
         jPanel9.add(jLabel18);
-        jLabel18.setBounds(100, 100, 56, 16);
+        jLabel18.setBounds(100, 100, 61, 17);
 
         jLabel19.setText("Price:");
         jPanel9.add(jLabel19);
-        jLabel19.setBounds(15, 118, 50, 16);
+        jLabel19.setBounds(15, 118, 50, 17);
 
         jLabel20.setText("Quantity:");
         jPanel9.add(jLabel20);
-        jLabel20.setBounds(15, 143, 49, 16);
+        jLabel20.setBounds(15, 143, 100, 17);
 
         jLabel21.setText("$$$");
         jPanel9.add(jLabel21);
-        jLabel21.setBounds(49, 118, 60, 16);
+        jLabel21.setBounds(49, 118, 60, 17);
 
         jSpinner4.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jPanel9.add(jSpinner4);
-        jSpinner4.setBounds(68, 140, 64, 22);
+        jSpinner4.setBounds(68, 140, 64, 23);
 
         jButton11.setBackground(new java.awt.Color(102, 51, 0));
         jButton11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -546,11 +546,11 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
 
         jLabel37.setText("Stock:");
         jPanel9.add(jLabel37);
-        jLabel37.setBounds(160, 120, 40, 16);
+        jLabel37.setBounds(160, 120, 40, 17);
 
         jLabel42.setText("#");
         jPanel9.add(jLabel42);
-        jLabel42.setBounds(200, 120, 43, 16);
+        jLabel42.setBounds(200, 120, 43, 17);
 
         jPanel5.add(jPanel9);
         jPanel9.setBounds(680, 320, 240, 220);
@@ -560,23 +560,23 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
 
         jLabel23.setText("Product ID");
         jPanel10.add(jLabel23);
-        jLabel23.setBounds(100, 100, 56, 16);
+        jLabel23.setBounds(100, 100, 61, 17);
 
         jLabel24.setText("Price:");
         jPanel10.add(jLabel24);
-        jLabel24.setBounds(15, 118, 50, 16);
+        jLabel24.setBounds(15, 118, 50, 17);
 
         jLabel25.setText("Quantity:");
         jPanel10.add(jLabel25);
-        jLabel25.setBounds(15, 143, 49, 16);
+        jLabel25.setBounds(15, 143, 110, 17);
 
         jLabel26.setText("$$$");
         jPanel10.add(jLabel26);
-        jLabel26.setBounds(49, 118, 60, 16);
+        jLabel26.setBounds(49, 118, 60, 17);
 
         jSpinner5.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jPanel10.add(jSpinner5);
-        jSpinner5.setBounds(68, 140, 64, 22);
+        jSpinner5.setBounds(68, 140, 64, 23);
 
         jButton12.setBackground(new java.awt.Color(102, 51, 0));
         jButton12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -593,11 +593,11 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
 
         jLabel35.setText("Stock:");
         jPanel10.add(jLabel35);
-        jLabel35.setBounds(160, 120, 40, 16);
+        jLabel35.setBounds(160, 120, 40, 17);
 
         jLabel41.setText("#");
         jPanel10.add(jLabel41);
-        jLabel41.setBounds(200, 120, 43, 16);
+        jLabel41.setBounds(200, 120, 43, 17);
 
         jPanel5.add(jPanel10);
         jPanel10.setBounds(680, 80, 240, 220);
@@ -607,23 +607,23 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
 
         jLabel28.setText("Product ID");
         jPanel11.add(jLabel28);
-        jLabel28.setBounds(90, 100, 80, 16);
+        jLabel28.setBounds(90, 100, 80, 17);
 
         jLabel29.setText("Price:");
         jPanel11.add(jLabel29);
-        jLabel29.setBounds(15, 118, 50, 16);
+        jLabel29.setBounds(15, 118, 50, 17);
 
         jLabel30.setText("Quantity:");
         jPanel11.add(jLabel30);
-        jLabel30.setBounds(15, 143, 49, 16);
+        jLabel30.setBounds(15, 143, 90, 17);
 
         jLabel31.setText("$$$");
         jPanel11.add(jLabel31);
-        jLabel31.setBounds(49, 118, 60, 16);
+        jLabel31.setBounds(49, 118, 60, 17);
 
         jSpinner6.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
         jPanel11.add(jSpinner6);
-        jSpinner6.setBounds(68, 140, 64, 22);
+        jSpinner6.setBounds(68, 140, 64, 23);
 
         jButton13.setBackground(new java.awt.Color(102, 51, 0));
         jButton13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -640,11 +640,11 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
 
         jLabel34.setText("Stock:");
         jPanel11.add(jLabel34);
-        jLabel34.setBounds(160, 120, 40, 16);
+        jLabel34.setBounds(160, 120, 40, 17);
 
         jLabel40.setText("#");
         jPanel11.add(jLabel40);
-        jLabel40.setBounds(200, 120, 30, 16);
+        jLabel40.setBounds(200, 120, 30, 17);
 
         jPanel5.add(jPanel11);
         jPanel11.setBounds(370, 80, 240, 220);
@@ -653,13 +653,13 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sizes", "Small", "Medium", "Large" }));
         jComboBox2.addActionListener(this::jComboBox2ActionPerformed);
         jPanel5.add(jComboBox2);
-        jComboBox2.setBounds(389, 20, 80, 22);
+        jComboBox2.setBounds(389, 20, 83, 21);
 
         lblMeasurement.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblMeasurement.setText("size measurements");
         lblMeasurement.addActionListener(this::lblMeasurementActionPerformed);
         jPanel5.add(lblMeasurement);
-        lblMeasurement.setBounds(480, 20, 140, 23);
+        lblMeasurement.setBounds(480, 20, 151, 21);
 
         jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 970, 560));
 

@@ -19,15 +19,15 @@ public class Pants extends Product {
     private void calculateMeasurements() {
         switch (this.getSize()) {
             case "Small": 
-                this.waist = 28; 
+                this.waist = 30; 
                 this.inseam = 30; 
                 break;
             case "Medium": 
-                this.waist = 32; 
-                this.inseam = 31; 
+                this.waist = 34; 
+                this.inseam = 32; 
                 break;
             case "Large": 
-                this.waist = 36; 
+                this.waist = 38; 
                 this.inseam = 32; 
                 break;
             default: 

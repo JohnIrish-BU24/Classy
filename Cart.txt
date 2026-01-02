@@ -1,0 +1,7 @@
+Cat Shirt,Small,1,399.0,399.0
+Khaki Cat,Small,1,399.0,399.0
+White Pants,Small,1,599.0,599.0
+Denim,Small,1,899.0,899.0
+Floral White,Small,1,849.0,849.0
+Light Blue,Small,1,1249.0,1249.0
+Blue,Small,1,649.0,649.0
