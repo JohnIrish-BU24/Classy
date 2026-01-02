@@ -28,7 +28,7 @@
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/LogIn/Classy Logo.png"/>
+          <Image iconType="3" name="/classy/views/LogIn/Classy Logo.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -123,14 +123,14 @@
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/LogIn/User Logo.png"/>
+              <Image iconType="3" name="/classy/views/LogIn/User Logo.png"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/LogIn/Password Logo.png"/>
+              <Image iconType="3" name="/classy/views/LogIn/Password Logo.png"/>
             </Property>
           </Properties>
         </Component>
@@ -167,7 +167,7 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/LogIn/LogIn_Pic.png"/>
+          <Image iconType="3" name="/classy/views/LogIn/LogIn_Pic.png"/>
         </Property>
       </Properties>
       <Constraints>

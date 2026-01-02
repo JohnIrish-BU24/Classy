@@ -83,7 +83,7 @@ public class LogInJFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LogIn/Classy Logo.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/classy/views/LogIn/Classy Logo.png"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 235, 205));
@@ -95,9 +95,9 @@ public class LogInJFrame extends javax.swing.JFrame {
 
         jPasswordField1.addActionListener(this::jPasswordField1ActionPerformed);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LogIn/User Logo.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/classy/views/LogIn/User Logo.png"))); // NOI18N
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LogIn/Password Logo.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/classy/views/LogIn/Password Logo.png"))); // NOI18N
 
         jCheckBox1.setFont(new java.awt.Font("Tw Cen MT", 1, 12)); // NOI18N
         jCheckBox1.setText("Show Password");
@@ -154,7 +154,7 @@ public class LogInJFrame extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 420, 250));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LogIn/LogIn_Pic.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/classy/views/LogIn/LogIn_Pic.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, -1));
 
         pack();
@@ -180,7 +180,7 @@ public class LogInJFrame extends javax.swing.JFrame {
         String password = new String(jPasswordField1.getPassword());
 
         // 2. CHECK CREDENTIALS
-        if (username.equals("admin") && password.equals("12345")) {
+        if (username.equals("user") && password.equals("12345")) {
             // SUCCESS
             Product_ListJFrame_Shirts mainPage = new Product_ListJFrame_Shirts();
             mainPage.setVisible(true);

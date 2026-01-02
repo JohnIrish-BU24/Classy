@@ -93,7 +93,7 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
         updateLabel("Star Pants", jLabel28, jLabel31, jLabel40);
         updateLabel("Hiphop", jLabel23, jLabel26, jLabel41);
         updateLabel("White Pants", jLabel11, jLabel17, jLabel39);
-        updateLabel("Jorts", jLabel3, jLabel15, jLabel36);
+        updateLabel("Pink Pants", jLabel3, jLabel15, jLabel36);
         updateLabel("Denim", jLabel18, jLabel21, jLabel42);
     }
     
@@ -355,7 +355,7 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
 
         jLabel3.setText("Product ID");
         jPanel6.add(jLabel3);
-        jLabel3.setBounds(110, 100, 56, 16);
+        jLabel3.setBounds(90, 100, 70, 16);
 
         jLabel4.setText("Price:");
         jPanel6.add(jLabel4);
@@ -596,7 +596,7 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
 
         jLabel28.setText("Product ID");
         jPanel11.add(jLabel28);
-        jLabel28.setBounds(90, 100, 56, 16);
+        jLabel28.setBounds(90, 100, 80, 16);
 
         jLabel29.setText("Price:");
         jPanel11.add(jLabel29);
@@ -730,8 +730,8 @@ public class Product_ListJFrame_Pants extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // Jorts
-        handleAddToCart("Jorts", jSpinner1);
+        // Pink Pants
+        handleAddToCart("Pink Pants", jSpinner1);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
