@@ -1,4 +1,4 @@
-Cat Shirt 399.0 43 15 13 15
+Cat Shirt 399.0 40 15 10 15
 Varsity 499 21 7 7 7
 Mountain 349.0 37 10 15 12
 Stripes 399.0 28 10 10 8

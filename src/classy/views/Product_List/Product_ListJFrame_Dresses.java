@@ -137,27 +137,36 @@ public class Product_ListJFrame_Dresses extends javax.swing.JFrame {
         stockLbl.setText(String.valueOf(currentStock));
     }
     
+    // --- REUSABLE HELPER FOR ADD TO CART ---
     private void handleAddToCart(String baseName, javax.swing.JSpinner spinner) {
         int qty = (Integer) spinner.getValue();
         String size = jComboBox1.getSelectedItem().toString(); 
 
+        // 1. Check Size Selection
         if (size.equals("Sizes") || size.equals("Select")) {
             javax.swing.JOptionPane.showMessageDialog(this, "Please select a specific Size.");
             return;
         }
 
-        // Construct specific key to check stock
+        // 2. Check Quantity (SPECIFIC ERROR)
+        if (qty <= 0) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Please enter a valid quantity.");
+            return;
+        }
+
+        // 3. Check Product Existence
         String specificKey = baseName + " " + size;
-
-        if (productMap.containsKey(specificKey) && qty > 0) {
-            // Call Service
-            classy.services.InventoryService.addToCart(this, baseName, size, qty, "Shirts");
-
+        
+        if (productMap.containsKey(specificKey)) {
+            // Call Service (The Service handles the "Not Enough Stock" check)
+            InventoryService.addToCart(this, baseName, size, qty, "Dresses");
+            
             // Reset & Refresh
             spinner.setValue(0);
-            loadProductData(); // Re-read file to update labels immediately
+            loadProductData(); 
         } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Invalid Quantity or Item Unavailable.");
+            // This only shows if the item is truly missing from the file
+            javax.swing.JOptionPane.showMessageDialog(this, "Item Unavailable.");
         }
     }
 
