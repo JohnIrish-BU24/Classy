@@ -2,7 +2,7 @@ Cat Shirt 399.0 43 15 13 15
 Varsity 499 21 7 7 7
 Mountain 349.0 37 10 15 12
 Stripes 399.0 28 10 10 8
-Cowgirl 249.0 6 3 3 0
+Cowgirl 249.0 5 2 3 0
 Khaki Cat 399 10 3 2 5
 Black Pants 799 10 6 4 0
 Star Pants 799 15 10 0 5

@@ -97,7 +97,7 @@ public class OrdersJFrame extends javax.swing.JFrame {
         jButton4.setText("Log Out");
         jButton4.addActionListener(this::jButton4ActionPerformed);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Orders/Logo2.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/classy/views/Orders/Logo2.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
